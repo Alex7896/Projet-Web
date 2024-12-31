@@ -1,0 +1,11 @@
+{
+    "name": "p2114792/projet",
+    "autoload": {
+        "psr-4": {
+            "P2114792\\Projet\\": "src/"
+        }
+    },
+    "require": {
+        "twig/twig": "3.3"
+    }
+}
