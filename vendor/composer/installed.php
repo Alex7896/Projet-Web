@@ -3,7 +3,7 @@
         'name' => 'p2114792/projet',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '0f0a244ba8996dc9fe4f04dd48a218b1a6509cdb',
+        'reference' => '84b60d526406b7bd0afad49db7571c3ffae7dc64',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'p2114792/projet' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '0f0a244ba8996dc9fe4f04dd48a218b1a6509cdb',
+            'reference' => '84b60d526406b7bd0afad49db7571c3ffae7dc64',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
