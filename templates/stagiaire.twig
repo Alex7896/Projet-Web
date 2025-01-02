@@ -1,184 +1,181 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* Réinitialisation de la hauteur et des marges */
-        html, body {
-            height: 100%;
-            margin: 0;
-            font-family: 'Courier New', Verdana, sans-serif;
-        }
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			/* Réinitialisation de la hauteur et des marges */
+			html,
+			body {
+				height: 100%;
+				margin: 0;
+				font-family: 'Courier New', Verdana, sans-serif;
+			}
 
-        body {
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-        }
+			body {
+				background-color: #f0f0f0;
+				display: flex;
+				justify-content: flex-start;
+				align-items: flex-start;
+			}
 
-        /* Style de la navbar */
-        nav {
-            background-color: #222;
-            width: 290px;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            color: white;
-            border-right: 5px solid #4CAF50;
-            display: flex;
-            flex-direction: column;
-            padding-top: 20px;
-        }
+			/* Style de la navbar */
+			nav {
+				background-color: #222;
+				width: 290px;
+				height: 100vh;
+				position: fixed;
+				top: 0;
+				left: 0;
+				color: white;
+				border-right: 5px solid #4CAF50;
+				display: flex;
+				flex-direction: column;
+				padding-top: 20px;
+			}
 
-        nav a {
-            display: flex;
-            align-items: center;
-            padding: 17px 20px;
-            text-decoration: none;
-            color: white;
-            font-size: 1.3em;
-            white-space: nowrap;
-        }
+			nav a {
+				display: flex;
+				align-items: center;
+				padding: 17px 20px;
+				text-decoration: none;
+				color: white;
+				font-size: 1.3em;
+				white-space: nowrap;
+			}
 
-        nav a img {
-            width: 20px;
-            height: auto;
-            margin-right: 10px;
-        }
+			nav a img {
+				width: 20px;
+				height: auto;
+				margin-right: 10px;
+			}
 
-        nav a.actif {
-            background-color: #4CAF50;
-        }
+			nav a.actif {
+				background-color: #4CAF50;
+			}
 
-        nav a:hover {
-            background-color: #404040;
-        }
+			nav a:hover {
+				background-color: #404040;
+			}
 
-        /* Contenu principal (à droite de la navbar) */
-        .content {
-            margin-left: 290px;
-            padding: 20px;
-            width: calc(100% - 290px);
-        }
+			/* Contenu principal (à droite de la navbar) */
+			.content {
+				margin-left: 290px;
+				padding: 20px;
+				width: calc(100% - 290px);
+			}
 
-        /* Style des boutons en haut */
-        .button-group {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
+			/* Style des boutons en haut */
+			.button-group {
+				display: flex;
+				justify-content: space-between;
+				margin-bottom: 20px;
+			}
 
-        .button-group button {
-            padding: 10px 15px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+			.button-group button {
+				padding: 10px 15px;
+				background-color: #3498db;
+				color: white;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+			}
 
-        .button-group button:hover {
-            background-color: #2980b9;
-        }
+			.button-group button:hover {
+				background-color: #2980b9;
+			}
 
-        /* Style du tableau */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background-color: white;
-        }
+			/* Style du tableau */
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				margin-top: 20px;
+				background-color: white;
+			}
 
-        th, td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: left;
-        }
+			th,
+			td {
+				border: 1px solid #ccc;
+				padding: 10px;
+				text-align: left;
+			}
 
-        th {
-            background-color: #f4f4f4;
-        }
+			th {
+				background-color: #f4f4f4;
+			}
 
-        .actions button {
-            margin-right: 5px;
-            padding: 5px 10px;
-            background-color: #16a085;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-        }
+			.actions button {
+				margin-right: 5px;
+				padding: 5px 10px;
+				background-color: #16a085;
+				color: white;
+				border: none;
+				border-radius: 3px;
+				cursor: pointer;
+			}
 
-        .actions button:hover {
-            background-color: #1abc9c;
-        }
+			.actions button:hover {
+				background-color: #1abc9c;
+			}
 
-        .details button {
-            padding: 5px 10px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-        }
+			.details button {
+				padding: 5px 10px;
+				background-color: #3498db;
+				color: white;
+				border: none;
+				border-radius: 3px;
+				cursor: pointer;
+			}
 
-        .details button:hover {
-            background-color: #2980b9;
-        }
-    </style>
-</head>
-<body>
+			.details button:hover {
+				background-color: #2980b9;
+			}
+		</style>
+	</head>
+</html></style></head><body><!-- Navbar --><nav>
+<a href="index.php" class="actif"><img src="../src/home.png" alt="Accueil">Accueil</a>
+<a href="entreprise.php"><img src="../src/entreprise.png" alt="Entreprise">Entreprise</a>
+<a href="stagiaire.php"><img src="../src/stage.png" alt="Stagiaire">Stagiaire</a>
+<a href="#"><img src="../src/inscrire.png" alt="Inscription">Inscription</a>
+<a href="#"><img src="../src/aide.png" alt="Aide">Aide</a>
+<a href="#"><img src="../src/deconnexion.png" alt="Déconnexion">Déconnexion</a>
+<a href="#"><img src="../src/droite.png" alt="Développer">Développer</a>
+<a href="#"><img src="../src/gauche.png" alt="Réduire">Réduire</a></nav><!-- Contenu principal --><div class="content">
+<div class="button-group">
+	<button onclick="window.location.href='rechercher_stagiaire.php';">Rechercher un stagiaire existant</button>
+	<button onclick="window.location.href='ajouter_etudiant.php';">Ajouter un étudiant</button>
+</div>
 
-    <!-- Navbar -->
-    <nav>
-        <a href="index.php" class="actif"><img src="../src/home.png" alt="Accueil">Accueil</a>
-        <a href="entreprise.php"><img src="../src/entreprise.png" alt="Entreprise">Entreprise</a>
-        <a href="stagiaire.php"><img src="../src/stage.png" alt="Stagiaire">Stagiaire</a>
-        <a href="#"><img src="../src/inscrire.png" alt="Inscription">Inscription</a>
-        <a href="#"><img src="../src/aide.png" alt="Aide">Aide</a>
-        <a href="#"><img src="../src/deconnexion.png" alt="Déconnexion">Déconnexion</a>
-        <a href="#"><img src="../src/droite.png" alt="Développer">Développer</a>
-        <a href="#"><img src="../src/gauche.png" alt="Réduire">Réduire</a>
-    </nav>
+<table>
+	<thead>
+		<tr>
+			<th>Détails</th>
+			<th>Opérations</th>
+			<th>Étudiant</th>
+			<th>Entreprise</th>
+			<th>Professeur</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for stagiaire in stagiaires %}
+			<tr>
+				<td class="details">
+					<button>Détails</button>
+				</td>
+				<td class="actions">
+					<button>Modifier</button>
+					<form action="supprimer_etudiant.php" method="POST" style="display:inline;">
+						<button type="submit" name="num_etudiant" value="{{ stagiaire.num_etudiant }}" class="delete">
+							Supprimer
+						</button>
+					</form>
 
-    <!-- Contenu principal -->
-    <div class="content">
-        <div class="button-group">
-            <button onclick="window.location.href='rechercher_stagiaire.php';">Rechercher un stagiaire existant</button>
-            <button onclick="window.location.href='ajouter_etudiant.php';">Ajouter un étudiant</button>
-        </div>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Détails</th>
-                    <th>Opérations</th>
-                    <th>Étudiant</th>
-                    <th>Entreprise</th>
-                    <th>Professeur</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for stagiaire in stagiaires %}
-                <tr>
-                    <td class="details">
-                        <button>Détails</button>
-                    </td>
-                    <td class="actions">
-                        <button>Modifier</button>
-                        <button class="delete">Supprimer</button>
-                    </td>
-                    <td>{{ stagiaire.nom_etudiant }}</td>
-                    <td>{{ stagiaire.nom_entreprise }}</td>
-                    <td>{{ stagiaire.nom_professeur }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-</body>
-</html>
+				</td>
+				<td>{{ stagiaire.nom_etudiant }}</td>
+				<td>{{ stagiaire.nom_entreprise }}</td>
+				<td>{{ stagiaire.nom_professeur }}</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table></div></body></html>
