@@ -149,32 +149,24 @@
 <table>
 	<thead>
 		<tr>
-			<th>Détails</th>
-			<th>Opérations</th>
 			<th>Étudiant</th>
 			<th>Entreprise</th>
 			<th>Professeur</th>
 		</tr>
 	</thead>
 	<tbody>
-		{% for stagiaire in stagiaires %}
+		{% for etudiant in etudiants %}
 			<tr>
-				<td class="details">
-					<button>Détails</button>
+				<td>{{ etudiant.nom_etudiant }}</td>
+				<td>{{ etudiant.nom_entreprise is not null ? etudiant.nom_entreprise : 'Pas de stage' }}</td>
+				<td>
+					{% if etudiant.nom_prof is not null %}
+						{{ etudiant.prenom_prof }}
+						{{ etudiant.nom_prof }}
+					{% else %}
+						Pas de professeur
+					{% endif %}
 				</td>
-				<td class="actions">
-					<button>Modifier</button>
-					<form action="supprimer_etudiant.php" method="POST" style="display:inline;">
-						<button type="submit" name="num_etudiant" value="{{ stagiaire.num_etudiant }}" class="delete">
-							Supprimer
-						</button>
-					</form>
-
-
-				</td>
-				<td>{{ stagiaire.nom_etudiant }}</td>
-				<td>{{ stagiaire.nom_entreprise }}</td>
-				<td>{{ stagiaire.nom_professeur }}</td>
 			</tr>
 		{% endfor %}
 	</tbody>
