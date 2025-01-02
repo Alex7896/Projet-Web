@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Styles globaux */
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Courier New', Verdana, sans-serif;
+        }
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+        nav {
+            background-color: #222;
+            width: 290px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            color: white;
+            border-right: 5px solid #4CAF50;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+        }
+        nav a {
+            display: flex;
+            align-items: center;
+            padding: 17px 20px;
+            text-decoration: none;
+            color: white;
+            font-size: 1.3em;
+            white-space: nowrap;
+        }
+        nav a img {
+            width: 20px;
+            height: auto;
+            margin-right: 10px;
+        }
+        nav a.actif {
+            background-color: #4CAF50;
+        }
+        nav a:hover {
+            background-color: #404040;
+        }
+        .content {
+            margin-left: 290px;
+            padding: 20px;
+            width: calc(100% - 290px);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        select, textarea {
+            width: 100%;
+            padding: 5px;
+            font-size: 1em;
+        }
+        .large-text {
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <a href="index.php" class="actif"><img src="../src/home.png" alt="Accueil">Accueil</a>
+        <a href="entreprise.php"><img src="../src/entreprise.png" alt="Entreprise">Entreprise</a>
+        <a href="stagiaire.php"><img src="../src/stage.png" alt="Stagiaire">Stagiaire</a>
+        <a href="#"><img src="../src/inscrire.png" alt="Inscription">Inscription</a>
+        <a href="#"><img src="../src/aide.png" alt="Aide">Aide</a>
+        <a href="#"><img src="../src/deconnexion.png" alt="Déconnexion">Déconnexion</a>
+    </nav>
+
+    <!-- Contenu principal -->
+    <div class="content">
+        <h1>Formulaire d'Inscription</h1>
+        
+        <!-- Premier tableau : Contact -->
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">Contact</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Entreprise</td>
+                    <td>
+                        <select name="entreprise">
+                            <option value="entreprise1">Entreprise 1</option>
+                            <option value="entreprise2">Entreprise 2</option>
+                            <option value="entreprise3">Entreprise 3</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Etudiant</td>
+                    <td>
+                        <select name="etudiant">
+                            <option value="etudiant1">Jean Dupont</option>
+                            <option value="etudiant2">Marie Curie</option>
+                            <option value="etudiant3">Paul Martin</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Professeur</td>
+                    <td>
+                        <select name="professeur">
+                            <option value="prof1">Professeur A</option>
+                            <option value="prof2">Professeur B</option>
+                            <option value="prof3">Professeur C</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Deuxième tableau : Description du stage -->
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">Description du Stage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Date de début de stage</td>
+                    <td><input type="date" name="date_debut_stage"></td>
+                </tr>
+                <tr>
+                    <td>Date de fin de stage</td>
+                    <td><input type="date" name="date_fin_stage"></td>
+                </tr>
+                <tr>
+                    <td>Type de stage</td>
+                    <td>
+                        <select name="type_stage">
+                            <option value="aucun">Aucun</option>
+                            <option value="stage">Stage</option>
+                            <option value="alternance">Alternance</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Description du stage</td>
+                    <td><textarea name="description_stage" class="large-text"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Observation</td>
+                    <td><textarea name="observation" class="large-text"></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Bouton d'ajout -->
+        <div style="margin-top: 20px;">
+            <button type="submit">Ajouter</button>
+        </div>
+    </div>
+</body>
+</html>
