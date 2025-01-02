@@ -71,8 +71,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         echo "Veuillez remplir tous les champs.";
     }
-} else {
-    echo "Méthode de requête non valide.";
 }
 
 
