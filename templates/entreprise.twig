@@ -1,242 +1,199 @@
 <!DOCTYPE html>
 <html lang="fr">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<style>
-			/* Réinitialisation de la hauteur et des marges */
-			html,
-			body {
-				height: 100%;
-				margin: 0;
-				font-family: 'Courier New', Verdana, sans-serif;
-			}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Réinitialisation de la hauteur et des marges */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Courier New', Verdana, sans-serif;
+        }
 
-			body {
-				background-color: #f0f0f0;
-				display: flex;
-				justify-content: flex-start;
-				align-items: flex-start;
-			}
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
 
-			/* Style de la navbar */
-			nav {
-				background-color: #222;
-				width: 290px;
-				height: 100vh;
-				position: fixed;
-				top: 0;
-				left: 0;
-				color: white;
-				border-right: 5px solid #4CAF50;
-				display: flex;
-				flex-direction: column;
-				padding-top: 20px;
-			}
+        /* Style de la navbar */
+        nav {
+            background-color: #222;
+            width: 290px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            color: white;
+            border-right: 5px solid #4CAF50;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+        }
 
-			nav a {
-				display: flex;
-				align-items: center;
-				padding: 17px 20px;
-				text-decoration: none;
-				color: white;
-				font-size: 1.3em;
-				white-space: nowrap;
-			}
+        nav a {
+            display: flex;
+            align-items: center;
+            padding: 17px 20px;
+            text-decoration: none;
+            color: white;
+            font-size: 1.3em;
+            white-space: nowrap;
+        }
 
-			nav a img {
-				width: 20px;
-				height: auto;
-				margin-right: 10px;
-			}
+        nav a img {
+            width: 20px;
+            height: auto;
+            margin-right: 10px;
+        }
 
-			nav a.actif {
-				background-color: #4CAF50;
-			}
+        nav a.actif {
+            background-color: #4CAF50;
+        }
 
-			nav a:hover {
-				background-color: #404040;
-			}
+        nav a:hover {
+            background-color: #404040;
+        }
 
-			/* Contenu principal (à droite de la navbar) */
-			.content {
-				margin-left: 290px;
-				padding: 20px;
-				width: calc(100% - 290px);
-			}
+        /* Contenu principal (à droite de la navbar) */
+        .content {
+            margin-left: 290px;
+            padding: 20px;
+            width: calc(100% - 290px);
+        }
 
-			/* Style des boutons en haut */
-			.button-group {
-				display: flex;
-				justify-content: space-between;
-				margin-bottom: 20px;
-			}
+        /* Style des boutons en haut */
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
 
-			.button-group button {
-				padding: 10px 15px;
-				background-color: #3498db;
-				color: white;
-				border: none;
-				border-radius: 5px;
-				cursor: pointer;
-			}
+        .button-group button {
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-			.button-group button:hover {
-				background-color: #2980b9;
-			}
+        .button-group button:hover {
+            background-color: #2980b9;
+        }
 
-			/* Style du tableau */
-			table {
-				width: 100%;
-				border-collapse: collapse;
-				margin-top: 20px;
-				background-color: white;
-			}
+        /* Style du tableau */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+        }
 
-			th,
-			td {
-				border: 1px solid #ccc;
-				padding: 10px;
-				text-align: left;
-			}
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
 
-			th {
-				background-color: #f4f4f4;
-			}
+        th {
+            background-color: #f4f4f4;
+        }
 
-			.actions button {
-				margin-right: 5px;
-				padding: 5px 10px;
-				background-color: #16a085;
-				color: white;
-				border: none;
-				border-radius: 3px;
-				cursor: pointer;
-			}
+        .actions button {
+            margin-right: 5px;
+            padding: 5px 10px;
+            background-color: #16a085;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
 
-			.actions button:hover {
-				background-color: #1abc9c;
-			}
+        .actions button:hover {
+            background-color: #1abc9c;
+        }
 
-			.actions .delete {
-				background-color: #e74c3c;
-			}
+        .actions .delete {
+            background-color: #e74c3c;
+        }
 
-			.actions .delete:hover {
-				background-color: #c0392b;
-			}
+        .actions .delete:hover {
+            background-color: #c0392b;
+        }
 
-			.link-button {
-				background-color: #3498db;
-				color: white;
-				padding: 5px 10px;
-				text-decoration: none;
-				border-radius: 3px;
-			}
+        .link-button {
+            background-color: #3498db;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 3px;
+        }
 
-			.link-button:hover {
-				background-color: #2980b9;
-			}
-		</style>
-	</head>
-	<body>
+        .link-button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
 
-		<!-- Navbar -->
-		<nav>
-			<a href="index.php" class="actif"><img src="../src/home.png" alt="Accueil">Accueil</a>
-			<a href="entreprise.php"><img src="../src/entreprise.png" alt="Entreprise">Entreprise</a>
-			<a href="#"><img src="../src/stage.png" alt="Stagiaire">Stagiaire</a>
-			<a href="#"><img src="../src/inscrire.png" alt="Inscription">Inscription</a>
-			<a href="#"><img src="../src/aide.png" alt="Aide">Aide</a>
-			<a href="#"><img src="../src/deconnexion.png" alt="Déconnexion">Déconnexion</a>
-			<a href="#"><img src="../src/droite.png" alt="Développer">Développer</a>
-			<a href="#"><img src="../src/gauche.png" alt="Réduire">Réduire</a>
-		</nav>
+    <!-- Navbar -->
+    <nav>
+        <a href="index.php" class="actif"><img src="../src/home.png" alt="Accueil">Accueil</a>
+        <a href="entreprise.php"><img src="../src/entreprise.png" alt="Entreprise">Entreprise</a>
+        <a href="#"><img src="../src/stage.png" alt="Stagiaire">Stagiaire</a>
+        <a href="#"><img src="../src/inscrire.png" alt="Inscription">Inscription</a>
+        <a href="#"><img src="../src/aide.png" alt="Aide">Aide</a>
+        <a href="#"><img src="../src/deconnexion.png" alt="Déconnexion">Déconnexion</a>
+        <a href="#"><img src="../src/droite.png" alt="Développer">Développer</a>
+        <a href="#"><img src="../src/gauche.png" alt="Réduire">Réduire</a>
+    </nav>
 
-		<!-- Contenu principal -->
-		<div class="content">
-			<div class="button-group">
-				<button onclick="window.location.href='rechercher_entreprise.php';">Rechercher une entreprise</button>
-				<button onclick="window.location.href='ajouter_entreprise.php';">Ajouter une entreprise</button>
-			</div>
+    <!-- Contenu principal -->
+    <div class="content">
+        <div class="button-group">
+            <button onclick="window.location.href='rechercher_entreprise.php';">Rechercher une entreprise</button>
+            <button onclick="window.location.href='ajouter_entreprise.php';">Ajouter une entreprise</button>
+        </div>
 
-			<table>
-				<thead>
-					<tr>
-						<th>Opération</th>
-						<th>Entreprise</th>
-						<th>Responsable</th>
-						<th>Adresse</th>
-						<th>Site</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td class="actions">
-							<button>Détails</button>
-							<button>Inscription</button>
-							<button>Modifier</button>
-							<button class="delete">Supprimer</button>
-						</td>
-						<td>Entreprise A</td>
-						<td>Jean Dupont</td>
-						<td>123 Rue de Paris</td>
-						<td>
-							<a href="http://exemple.com" class="link-button">Visiter</a>
-						</td>
-					</tr>
-					<tr>
-						<td class="actions">
-							<button>Détails</button>
-							<button>Inscription</button>
-							<button>Modifier</button>
-							<button class="delete">Supprimer</button>
-						</td>
-						<td>Entreprise B</td>
-						<td>Marie Curie</td>
-						<td>456 Avenue des Champs</td>
-						<td></td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Opération</th>
+                    <th>Entreprise</th>
+                    <th>Responsable</th>
+                    <th>Adresse</th>
+                    <th>Site</th>
+                    <th>Spécialité</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entreprise in entreprises %}
+                <tr>
+                    <td class="actions">
+                        <button>Détails</button>
+                        <button>Inscription</button>
+                        <button>Modifier</button>
+                        <button class="delete">Supprimer</button>
+                    </td>
+                    <td>{{ entreprise.raison_sociale }}</td>
+                    <td>{{ entreprise.nom_resp }}</td>
+                    <td>{{ entreprise.rue_entreprise }}</td>
+                    <td>
+                        {% if entreprise.site_entreprise %}
+                        <a href="{{ entreprise.site_entreprise }}" class="link-button">Visiter</a>
+                        {% endif %}
+                    </td>
+                    <td>{{ entreprise.specialite_libelle }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
-		<table>
-			<thead>
-				<tr>
-					<th>raison_sociale</th>
-					<th>nom_contact</th>
-					<th>nom_resp</th>
-					<th>rue_entreprise</th>
-					<th>cp_entreprise</th>
-					<th>ville_entreprise</th>
-					<th>fax_entreprise</th>
-					<th>email</th>
-					<th>observation</th>
-					<th>site_entreprise</th>
-					<th>niveau</th>
-					<th>spécialité</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for entreprise in entreprises %}
-					<tr>
-						<td>{{ entreprise.raison_sociale }}</td>
-						<td>{{ entreprise.nom_contact }}</td>
-						<td>{{ entreprise.nom_resp }}</td>
-						<td>{{ entreprise.rue_entreprise }}</td>
-						<td>{{ entreprise.cp_entreprise }}</td>
-						<td>{{ entreprise.ville_entreprise }}</td>
-						<td>{{ entreprise.fax_entreprise }}</td>
-						<td>{{ entreprise.email }}</td>
-						<td>{{ entreprise.observation }}</td>
-						<td>{{ entreprise.site_entreprise }}</td>
-						<td>{{ entreprise.niveau }}</td>
-						<td>{{ entreprise.specialite_libelle }}</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-
-	</body>
+</body>
 </html>
