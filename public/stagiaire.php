@@ -1,5 +1,4 @@
 <?php
-require_once '../vendor/autoload.php'; // Inclure le loader de Twig
 session_start();
 
 if (!isset($_SESSION['user'])) {
@@ -14,14 +13,21 @@ if ($_SESSION['user']['role'] !== 'enseignant') {
 }
 
 require_once '../vendor/autoload.php';
+require_once 'connect.php'; // Fichier de connexion à la base de données
 
 
-$loader = new \Twig\Loader\FilesystemLoader('../templates');
-$twig = new \Twig\Environment($loader, [
-    'cache' => false,
-]);
+try {
+    // Requête pour récupérer les stagiaires
+    $queryStagiaires = "SELECT * FROM etudiant";
+    $stmtStagiaires = $pdo->query($queryStagiaires);
+    $stagiaires = $stmtStagiaires->rowCount() > 0 ? $stmtStagiaires->fetchAll(PDO::FETCH_ASSOC) : [];
+} catch (PDOException $e) {
+    die("Erreur lors de la récupération des données : " . $e->getMessage());
+}
 
+$loader = new \Twig\Loader\FilesystemLoader('../templates'); // Dossier des templates Twig
+$twig = new \Twig\Environment($loader);
 
 echo $twig->render('stagiaire.twig', [
-    'nom' => 'Utilisateur',
+    'stagiaires' => $stagiaires
 ]);
