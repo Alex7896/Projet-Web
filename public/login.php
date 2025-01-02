@@ -35,7 +35,7 @@ try {
         ];
 
         // Rediriger vers la page d'accueil ou une autre page sécurisée
-        header("Location: accueil.php");
+        header("Location: entreprise.php");
         exit;
     } else {
         echo "Login ou mot de passe incorrect.";
