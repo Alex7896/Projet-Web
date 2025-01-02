@@ -1,178 +1,180 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* Réinitialisation de la hauteur et des marges */
-        html, body {
-            height: 100%;
-            margin: 0;
-            font-family: 'Courier New', Verdana, sans-serif;
-        }
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			/* Réinitialisation de la hauteur et des marges */
+			html,
+			body {
+				height: 100%;
+				margin: 0;
+				font-family: 'Courier New', Verdana, sans-serif;
+			}
 
-        body {
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-        }
+			body {
+				background-color: #f0f0f0;
+				display: flex;
+				justify-content: flex-start;
+				align-items: flex-start;
+			}
 
-        /* Style de la navbar */
-        nav {
-            background-color: #222;
-            width: 290px;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            color: white;
-            border-right: 5px solid #4CAF50;
-            display: flex;
-            flex-direction: column;
-            padding-top: 20px;
-        }
+			/* Style de la navbar */
+			nav {
+				background-color: #222;
+				width: 290px;
+				height: 100vh;
+				position: fixed;
+				top: 0;
+				left: 0;
+				color: white;
+				border-right: 5px solid #4CAF50;
+				display: flex;
+				flex-direction: column;
+				padding-top: 20px;
+			}
 
-        nav a {
-            display: flex;
-            align-items: center;
-            padding: 17px 20px;
-            text-decoration: none;
-            color: white;
-            font-size: 1.3em;
-            white-space: nowrap;
-        }
+			nav a {
+				display: flex;
+				align-items: center;
+				padding: 17px 20px;
+				text-decoration: none;
+				color: white;
+				font-size: 1.3em;
+				white-space: nowrap;
+			}
 
-        nav a img {
-            width: 20px;
-            height: auto;
-            margin-right: 10px;
-        }
+			nav a img {
+				width: 20px;
+				height: auto;
+				margin-right: 10px;
+			}
 
-        nav a.actif {
-            background-color: #4CAF50;
-        }
+			nav a.actif {
+				background-color: #4CAF50;
+			}
 
-        nav a:hover {
-            background-color: #404040;
-        }
+			nav a:hover {
+				background-color: #404040;
+			}
 
-        /* Contenu principal (à droite de la navbar) */
-        .content {
-            margin-left: 290px;
-            padding: 20px;
-            width: calc(100% - 290px);
-        }
+			/* Contenu principal (à droite de la navbar) */
+			.content {
+				margin-left: 290px;
+				padding: 20px;
+				width: calc(100% - 290px);
+			}
 
-        /* Style du formulaire */
-        form {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            margin: 0 auto;
-        }
+			/* Style du formulaire */
+			form {
+				background-color: white;
+				padding: 20px;
+				border-radius: 8px;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+				max-width: 500px;
+				margin: 0 auto;
+			}
 
-        h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-        }
+			h2 {
+				text-align: center;
+				color: #333;
+				margin-bottom: 20px;
+			}
 
-        .form-group {
-            margin-bottom: 15px;
-        }
+			.form-group {
+				margin-bottom: 15px;
+			}
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
+			label {
+				display: block;
+				margin-bottom: 5px;
+				font-weight: bold;
+			}
 
-        input, select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+			input,
+			select {
+				width: 100%;
+				padding: 10px;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+			}
 
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-        }
+			button {
+				width: 100%;
+				padding: 10px;
+				background-color: #3498db;
+				color: white;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				font-size: 1em;
+			}
 
-        button:hover {
-            background-color: #2980b9;
-        }
-    </style>
-</head>
-<body>
+			button:hover {
+				background-color: #2980b9;
+			}
+		</style>
+	</head>
+	<body>
 
-    <!-- Navbar -->
-    <nav>
-        <a href="index.php" class="actif"><img src="../src/home.png" alt="Accueil">Accueil</a>
-        <a href="entreprise.php"><img src="../src/entreprise.png" alt="Entreprise">Entreprise</a>
-        <a href="stagiaire.php"><img src="../src/stage.png" alt="Stagiaire">Stagiaire</a>
-        <a href="#"><img src="../src/inscrire.png" alt="Inscription">Inscription</a>
-        <a href="#"><img src="../src/aide.png" alt="Aide">Aide</a>
-        <a href="#"><img src="../src/deconnexion.png" alt="Déconnexion">Déconnexion</a>
-        <a href="#"><img src="../src/droite.png" alt="Développer">Développer</a>
-        <a href="#"><img src="../src/gauche.png" alt="Réduire">Réduire</a>
-    </nav>
+		<!-- Navbar -->
+		<nav>
+			<a href="index.php" class="actif"><img src="../src/home.png" alt="Accueil">Accueil</a>
+			<a href="entreprise.php"><img src="../src/entreprise.png" alt="Entreprise">Entreprise</a>
+			<a href="stagiaire.php"><img src="../src/stage.png" alt="Stagiaire">Stagiaire</a>
+			<a href="#"><img src="../src/inscrire.png" alt="Inscription">Inscription</a>
+			<a href="#"><img src="../src/aide.png" alt="Aide">Aide</a>
+			<a href="#"><img src="../src/deconnexion.png" alt="Déconnexion">Déconnexion</a>
+			<a href="#"><img src="../src/droite.png" alt="Développer">Développer</a>
+			<a href="#"><img src="../src/gauche.png" alt="Réduire">Réduire</a>
+		</nav>
 
-    <!-- Contenu principal -->
-    <div class="content">
-        <form action="traiter_ajout_etudiant.php" method="POST">
-            <h2>Information concernant l'étudiant</h2>
-            
-            <div class="form-group">
-                <label for="nom">Nom</label>
-                <input type="text" id="nom" name="nom" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="prenom">Prénom</label>
-                <input type="text" id="prenom" name="prenom" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="login">Login</label>
-                <input type="text" id="login" name="login" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="classe">Classe</label>
-                <select id="classe" name="classe" required>
-                    <option value="SIO1-SLAM">SIO1-SLAM</option>
-                    <option value="SIO2-SLAM">SIO2-SLAM</option>
-                    <option value="CG1">CG1</option>
-                    <option value="CG2">CG2</option>
-                    <option value="AM1">AM1</option>
-                    <option value="AM2">AM2</option>
-                    <option value="NRC1">NRC1</option>
-                    <option value="NRC2">NRC2</option>
-                    <option value="SN1">SN1</option>
-                    <option value="SN2">SN2</option>
-                    <option value="SIO1-SISR">SIO1-SISR</option>
-                    <option value="SIO2-SISR">SIO2-SISR</option>
-                </select>
-            </div>
-            
-            <button type="submit">Ajouter</button>
-        </form>
-    </div>
+		<!-- Contenu principal -->
+		<div class="content">
+			<form action="ajouter_etudiant.php" method="POST">
+				<h2>Information concernant l'étudiant</h2>
 
-</body>
+				<div class="form-group">
+					<label for="nom">Nom</label>
+					<input type="text" id="nom" name="nom" required>
+				</div>
+
+				<div class="form-group">
+					<label for="prenom">Prénom</label>
+					<input type="text" id="prenom" name="prenom" required>
+				</div>
+
+				<div class="form-group">
+					<label for="login">Login</label>
+					<input type="text" id="login" name="login" required>
+				</div>
+
+				<div class="form-group">
+					<label for="password">Mot de passe</label>
+					<input type="password" id="password" name="password" required>
+				</div>
+
+				<div class="form-group">
+					<label for="classe">Classe</label>
+					<select id="classe" name="classe" required>
+						<option value="SIO1-SLAM">SIO1-SLAM</option>
+						<option value="SIO2-SLAM">SIO2-SLAM</option>
+						<option value="CG1">CG1</option>
+						<option value="CG2">CG2</option>
+						<option value="AM1">AM1</option>
+						<option value="AM2">AM2</option>
+						<option value="NRC1">NRC1</option>
+						<option value="NRC2">NRC2</option>
+						<option value="SN1">SN1</option>
+						<option value="SN2">SN2</option>
+						<option value="SIO1-SISR">SIO1-SISR</option>
+						<option value="SIO2-SISR">SIO2-SISR</option>
+					</select>
+				</div>
+
+				<button type="submit">Ajouter</button>
+			</form>
+		</div>
+
+	</body>
 </html>
