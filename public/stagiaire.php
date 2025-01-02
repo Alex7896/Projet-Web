@@ -17,17 +17,33 @@ require_once 'connect.php'; // Fichier de connexion à la base de données
 
 
 try {
-    // Requête pour récupérer les stagiaires
-    $queryStagiaires = "SELECT * FROM etudiant";
-    $stmtStagiaires = $pdo->query($queryStagiaires);
-    $stagiaires = $stmtStagiaires->rowCount() > 0 ? $stmtStagiaires->fetchAll(PDO::FETCH_ASSOC) : [];
+    // Requête pour récupérer tous les étudiants avec leurs stages (s'il y en a)
+    $query = "
+        SELECT 
+            etudiant.nom_etudiant, 
+            entreprise.raison_sociale AS nom_entreprise, 
+            professeur.nom_prof, 
+            professeur.prenom_prof
+        FROM 
+            etudiant
+        LEFT JOIN 
+            stage ON stage.num_etudiant = etudiant.num_etudiant
+        LEFT JOIN 
+            professeur ON stage.num_prof = professeur.num_prof
+        LEFT JOIN 
+            entreprise ON stage.num_entreprise = entreprise.num_entreprise
+    ";
+    $stmt = $pdo->query($query);
+    $etudiants = $stmt->fetchAll(PDO::FETCH_ASSOC); // Récupérer les résultats
 } catch (PDOException $e) {
     die("Erreur lors de la récupération des données : " . $e->getMessage());
 }
 
-$loader = new \Twig\Loader\FilesystemLoader('../templates'); // Dossier des templates Twig
+// Charger Twig
+$loader = new \Twig\Loader\FilesystemLoader('../templates');
 $twig = new \Twig\Environment($loader);
 
+// Passer les données au template Twig
 echo $twig->render('stagiaire.twig', [
-    'stagiaires' => $stagiaires
+    'etudiants' => $etudiants
 ]);
