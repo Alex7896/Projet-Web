@@ -3,16 +3,15 @@ require_once '../vendor/autoload.php'; // Inclure le loader de Twig
 require_once 'connect.php'; // Fichier de connexion à la base de données
 
 try {
-    // Requête pour récupérer toutes les entreprises
-    $query = "SELECT * FROM entreprise";
-    $stmt = $pdo->query($query);
-
-    // Vérifiez si des entreprises existent
-    if ($stmt->rowCount() > 0) {
-        $entreprises = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    } else {
-        $entreprises = [];
-    }
+    // Récupérer les entreprises
+    $queryEntreprises = "
+    SELECT entreprise.*, spec_entreprise.num_spec, specialite.libelle AS specialite_libelle
+    FROM entreprise
+    LEFT JOIN spec_entreprise ON entreprise.num_entreprise = spec_entreprise.num_entreprise
+    LEFT JOIN specialite ON spec_entreprise.num_spec = specialite.num_spec
+    ";
+    $stmtEntreprises = $pdo->query($queryEntreprises);
+    $entreprises = $stmtEntreprises->rowCount() > 0 ? $stmtEntreprises->fetchAll(PDO::FETCH_ASSOC) : [];
 } catch (PDOException $e) {
     die("Erreur lors de la récupération des données : " . $e->getMessage());
 }
@@ -22,4 +21,6 @@ $loader = new \Twig\Loader\FilesystemLoader('../templates'); // Dossier des temp
 $twig = new \Twig\Environment($loader);
 
 // Rendre le template Twig avec les données
-echo $twig->render('entreprise.twig', ['entreprises' => $entreprises]);
+echo $twig->render('entreprise.twig', [
+    'entreprises' => $entreprises,
+]);
