@@ -1,270 +1,300 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Détails de l'entreprise - Exemple Entreprise</title>
-    <link rel="stylesheet" href="path_to_your_css_file.css">
-</head>
-<style>
-    /* Réinitialisation de la hauteur et des marges */
-    html, body {
-        height: 100%;
-        margin: 0;
-        font-family: 'Courier New', Verdana, sans-serif;
-    }
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Détails de l'entreprise - Exemple Entreprise</title>
+		<link rel="stylesheet" href="path_to_your_css_file.css">
+	</head>
+	<style>
+		/* Réinitialisation de la hauteur et des marges */
+		html,
+		body {
+			height: 100%;
+			margin: 0;
+			font-family: 'Courier New', Verdana, sans-serif;
+		}
 
-    body {
-        background-color: #f0f0f0;
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-    }
+		body {
+			background-color: #f0f0f0;
+			display: flex;
+			justify-content: flex-start;
+			align-items: flex-start;
+		}
 
-    /* Style de la navbar */
-    nav {
-        background-color: #222;
-        width: 290px;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        left: 0;
-        color: white;
-        border-right: 5px solid #4CAF50;
-        display: flex;
-        flex-direction: column;
-        padding-top: 20px;
-    }
+		/* Style de la navbar */
+		nav {
+			background-color: #222;
+			width: 290px;
+			height: 100vh;
+			position: fixed;
+			top: 0;
+			left: 0;
+			color: white;
+			border-right: 5px solid #4CAF50;
+			display: flex;
+			flex-direction: column;
+			padding-top: 20px;
+		}
 
-    nav a {
-        display: flex;
-        align-items: center;
-        padding: 17px 20px;
-        text-decoration: none;
-        color: white;
-        font-size: 1.3em;
-        white-space: nowrap;
-    }
+		nav a {
+			display: flex;
+			align-items: center;
+			padding: 17px 20px;
+			text-decoration: none;
+			color: white;
+			font-size: 1.3em;
+			white-space: nowrap;
+		}
 
-    nav a img {
-        width: 20px;
-        height: auto;
-        margin-right: 10px;
-    }
+		nav a img {
+			width: 20px;
+			height: auto;
+			margin-right: 10px;
+		}
 
-    nav a.actif {
-        background-color: #4CAF50;
-    }
+		nav a.actif {
+			background-color: #4CAF50;
+		}
 
-    nav a:hover {
-        background-color: #404040;
-    }
+		nav a:hover {
+			background-color: #404040;
+		}
 
-    /* Contenu principal */
-    .content {
-        margin-left: 290px;
-        padding: 20px;
-        width: calc(100% - 290px);
-    }
+		/* Contenu principal */
+		.content {
+			margin-left: 290px;
+			padding: 20px;
+			width: calc(100% - 290px);
+		}
 
-    /* Titres principaux */
-    h1 {
-        font-size: 2.5em;
-        margin-bottom: 20px;
-        color: #333;
-    }
+		/* Titres principaux */
+		h1 {
+			font-size: 2.5em;
+			margin-bottom: 20px;
+			color: #333;
+		}
 
-    h2 {
-        font-size: 2em;
-        margin-bottom: 15px;
-        color: #2c3e50;
-    }
+		h2 {
+			font-size: 2em;
+			margin-bottom: 15px;
+			color: #2c3e50;
+		}
 
-    /* Sections Info, Contact et Divers */
-    section {
-        margin-bottom: 40px;
-        padding: 20px;
-        background-color: white;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+		/* Sections Info, Contact et Divers */
+		section {
+			margin-bottom: 40px;
+			padding: 20px;
+			background-color: white;
+			border-radius: 8px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
 
-    section ul {
-        list-style-type: none;
-    }
+		section ul {
+			list-style-type: none;
+		}
 
-    section ul li {
-        font-size: 1.2em;
-        margin-bottom: 10px;
-    }
+		section ul li {
+			font-size: 1.2em;
+			margin-bottom: 10px;
+		}
 
-    section ul li strong {
-        color: #2980b9;
-    }
+		section ul li strong {
+			color: #2980b9;
+		}
 
-    /* Tableau des stagiaires */
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-        background-color: white;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+		/* Tableau des stagiaires */
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-top: 20px;
+			background-color: white;
+			border: 1px solid #ddd;
+			border-radius: 8px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
 
-    table th, table td {
-        padding: 12px 15px;
-        text-align: left;
-        border: 1px solid #ddd;
-    }
+		table th,
+		table td {
+			padding: 12px 15px;
+			text-align: left;
+			border: 1px solid #ddd;
+		}
 
-    table th {
-        background-color: #2c3e50;
-        color: white;
-    }
+		table th {
+			background-color: #2c3e50;
+			color: white;
+		}
 
-    table tbody tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
+		table tbody tr:nth-child(even) {
+			background-color: #f9f9f9;
+		}
 
-    table tbody tr:hover {
-        background-color: #f1f1f1;
-    }
+		table tbody tr:hover {
+			background-color: #f1f1f1;
+		}
 
-    table td a {
-        color: #2980b9;
-        text-decoration: none;
-    }
+		table td a {
+			color: #2980b9;
+			text-decoration: none;
+		}
 
-    table td a:hover {
-        text-decoration: underline;
-    }
+		table td a:hover {
+			text-decoration: underline;
+		}
 
-    /* Styles des champs de formulaire */
-    input[type="text"], select {
-        width: 100%;
-        padding: 8px;
-        margin: 5px 0;
-        box-sizing: border-box;
-        border-radius: 4px;
-        border: 1px solid #ccc;
-    }
+		/* Styles des champs de formulaire */
+		input[type="text"],
+		select {
+			width: 100%;
+			padding: 8px;
+			margin: 5px 0;
+			box-sizing: border-box;
+			border-radius: 4px;
+			border: 1px solid #ccc;
+		}
 
-    select {
-        font-size: 1em;
-    }
+		select {
+			font-size: 1em;
+		}
 
-    /* Bouton */
-    button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 20px;
-    }
+		/* Bouton */
+		button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			margin-top: 20px;
+		}
 
-    button:hover {
-        background-color: #45a049;
-    }
+		button:hover {
+			background-color: #45a049;
+		}
 
-    /* Marges pour les sections */
-    section h3 {
-        margin-top: 20px;
-        font-size: 1.5em;
-        color: #2c3e50;
-    }
+		/* Marges pour les sections */
+		section h3 {
+			margin-top: 20px;
+			font-size: 1.5em;
+			color: #2c3e50;
+		}
 
-    section p {
-        margin-top: 10px;
-        font-size: 1.2em;
-        color: #333;
-    }
-</style>
-<body>
-    <!-- Navbar -->
-    <nav>
-        <a href="index.php" class="actif"><img src="../src/home.png" alt="Accueil">Accueil</a>
-        <a href="entreprise.php"><img src="../src/entreprise.png" alt="Entreprise">Entreprise</a>
-        <a href="stagiaire.php"><img src="../src/stage.png" alt="Stagiaire">Stagiaire</a>
-        <a href="#"><img src="../src/inscrire.png" alt="Inscription">Inscription</a>
-        <a href="#"><img src="../src/aide.png" alt="Aide">Aide</a>
-        <a href="#"><img src="../src/deconnexion.png" alt="Déconnexion">Déconnexion</a>
-        <div style="margin-top: auto;">
-            <a href="#"><img src="../src/droite.png" alt="Développer">Développer</a>
-            <a href="#"><img src="../src/gauche.png" alt="Réduire">Réduire</a>
-        </div>
-    </nav>
+		section p {
+			margin-top: 10px;
+			font-size: 1.2em;
+			color: #333;
+		}
+	</style>
+	<body>
+		<!-- Navbar -->
+		<nav>
+			<a href="index.php" class="actif"><img src="../src/home.png" alt="Accueil">Accueil</a>
+			<a href="entreprise.php"><img src="../src/entreprise.png" alt="Entreprise">Entreprise</a>
+			<a href="stagiaire.php"><img src="../src/stage.png" alt="Stagiaire">Stagiaire</a>
+			<a href="#"><img src="../src/inscrire.png" alt="Inscription">Inscription</a>
+			<a href="#"><img src="../src/aide.png" alt="Aide">Aide</a>
+			<a href="#"><img src="../src/deconnexion.png" alt="Déconnexion">Déconnexion</a>
+			<div style="margin-top: auto;">
+				<a href="#"><img src="../src/droite.png" alt="Développer">Développer</a>
+				<a href="#"><img src="../src/gauche.png" alt="Réduire">Réduire</a>
+			</div>
+		</nav>
 
-    <!-- Contenu principal -->
-    <div class="content">
-        <h1>Détails de l'entreprise: Exemple Entreprise</h1>
+		<!-- Contenu principal -->
+		<div class="content">
+			<h1>Détails de l'entreprise:
+				{{ entreprise.raison_sociale }}</h1>
 
-        <!-- Partie Info -->
-        <section>
-            <h2>Information</h2>
-            <ul>
-                <li><strong>Nom de l'entreprise:</strong> Exemple Entreprise</li>
-                <li><strong>Nom du contact:</strong> Jean Dupont</li>
-                <li><strong>Nom du responsable:</strong> Marie Martin</li>
-            </ul>
-        </section>
+			<!-- Partie Info -->
+			<section>
+				<h2>Information</h2>
+				<ul>
+					<li>
+						<strong>Nom de l'entreprise:</strong>
+						{{ entreprise.raison_sociale }}</li>
+					<li>
+						<strong>Nom du contact:</strong>
+						{{ entreprise.nom_contact }}</li>
+					<li>
+						<strong>Nom du responsable:</strong>
+						{{ entreprise.nom_resp }}</li>
+				</ul>
+			</section>
 
-        <!-- Partie Contact -->
-        <section>
-            <h2>Contact</h2>
-            <ul>
-                <li><strong>Rue:</strong> 123 Rue de l'Industrie</li>
-                <li><strong>Code postal:</strong> 75001</li>
-                <li><strong>Ville:</strong> Paris</li>
-                <li><strong>Téléphone:</strong> +33 1 23 45 67 89</li>
-                <li><strong>Fax:</strong> +33 1 23 45 67 90</li>
-                <li><strong>Email:</strong> contact@exemple-entreprise.fr</li>
-            </ul>
-        </section>
+			<!-- Partie Contact -->
+			<section>
+				<h2>Contact</h2>
+				<ul>
+					<li>
+						<strong>Rue:</strong>
+						{{ entreprise.rue_entreprise }}</li>
+					<li>
+						<strong>Code postal:</strong>
+						{{ entreprise.cp_entreprise }}</li>
+					<li>
+						<strong>Ville:</strong>
+						{{ entreprise.ville_entreprise }}</li>
+					<li>
+						<strong>Téléphone:</strong>
+						{{ entreprise.tel_entreprise }}</li>
+					<li>
+						<strong>Fax:</strong>
+						{{ entreprise.fax_entreprise }}</li>
+					<li>
+						<strong>Email:</strong>
+						{{ entreprise.email }}</li>
+				</ul>
+			</section>
 
-        <!-- Partie Divers -->
-        <section>
-            <h2>Divers</h2>
-            <ul>
-                <li><strong>Observation:</strong> Cette entreprise est spécialisée dans la technologie.</li>
-                <li><strong>URL du site:</strong> <a href="https://www.exemple-entreprise.fr" target="_blank">www.exemple-entreprise.fr</a></li>
-                <li><strong>Niveau:</strong> BAC+2</li>
-                <li><strong>Spécialité:</strong> SLAM</li>
-            </ul>
-        </section>
+			<!-- Partie Divers -->
+			<section>
+				<h2>Divers</h2>
+				<ul>
+					<li>
+						<strong>Observation:</strong>
+						{{ entreprise.observation }}</li>
+					<li>
+						<strong>URL du site:</strong>
+						<a href="{{ entreprise.site_entreprise }}" target="_blank">{{ entreprise.site_entreprise }}</a>
+					</li>
+					<li>
+						<strong>Niveau:</strong>
+						{{ entreprise.niveau }}</li>
+					<li>
+						<strong>Spécialité:</strong>
+						{{ entreprise.specialite }}</li>
+				</ul>
+			</section>
 
-        <!-- Tableau des stagiaires -->
-        <section>
-            <h2>Stage</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date de début de stage</th>
-                        <th>Date de fin de stage</th>
-                        <th>Etudiant</th>
-                        <th>Projet</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Exemple de stagiaire -->
-                    <tr>
-                        <td>01/03/2025</td>
-                        <td>31/08/2025</td>
-                        <td>John Doe</td>
-                        <td>Développement d'une application mobile</td>
-                    </tr>
-                    <tr>
-                        <td>01/06/2025</td>
-                        <td>30/11/2025</td>
-                        <td>Marie Dupont</td>
-                        <td>Création d'une solution e-commerce</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-    </div>
-</body>
+			<!-- Tableau des stagiaires -->
+			<section>
+				<h2>Stages</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Date de début de stage</th>
+							<th>Date de fin de stage</th>
+							<th>Étudiant</th>
+							<th>Projet</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for stage in stages %}
+							<tr>
+								<td>{{ stage.debut_stage|date("d/m/Y") }}</td>
+								<td>{{ stage.fin_stage|date("d/m/Y") }}</td>
+								<td>{{ stage.nom_etudiant }}</td>
+								<td>{{ stage.desc_projet }}</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td colspan="4">Aucun stage associé à cette entreprise.</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</section>
+		</div>
+	</body>
 </html>

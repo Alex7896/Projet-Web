@@ -175,7 +175,9 @@
 					{% for entreprise in entreprises %}
 						<tr>
 							<td class="actions">
-								<button>Détails</button>
+								<button onclick="window.location.href='details_entreprise.php?num_entreprise={{ entreprise.num_entreprise }}'" class="btn btn-primary">
+									Détails
+								</button>
 								<button>Inscription</button>
 								<button>Modifier</button>
 								<button class="delete">Supprimer</button>
