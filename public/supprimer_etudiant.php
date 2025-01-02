@@ -19,9 +19,6 @@ require_once 'connect.php'; // Fichier de connexion à la base de données
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    echo '<div style="margin-left: 500px; padding: 10px; background-color: #ffdddd; color: #d8000c; border: 1px solid #d8000c; border-radius: 5px; font-size: 16px;">';
-    var_dump($_POST);
-    echo '</div>';
     // Récupérer l'ID de l'étudiant depuis le bouton
     $num_etudiant = isset($_POST['num_etudiant']) ? intval($_POST['num_etudiant']) : 0;
     try {

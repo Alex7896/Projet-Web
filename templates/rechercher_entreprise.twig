@@ -1,163 +1,166 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* Styles adaptés depuis entreprise.twig */
-        html, body {
-            height: 100%;
-            margin: 0;
-            font-family: 'Courier New', Verdana, sans-serif;
-        }
-        body {
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-        }
-        nav {
-            background-color: #222;
-            width: 290px;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            color: white;
-            border-right: 5px solid #4CAF50;
-            display: flex;
-            flex-direction: column;
-            padding-top: 20px;
-        }
-        nav a {
-            display: flex;
-            align-items: center;
-            padding: 17px 20px;
-            text-decoration: none;
-            color: white;
-            font-size: 1.3em;
-            white-space: nowrap;
-        }
-        nav a img {
-            width: 20px;
-            height: auto;
-            margin-right: 10px;
-        }
-        nav a.actif {
-            background-color: #4CAF50;
-        }
-        nav a:hover {
-            background-color: #404040;
-        }
-        .content {
-            margin-left: 290px;
-            padding: 20px;
-            width: calc(100% - 290px);
-        }
-        .search-form {
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .search-form input,
-        .search-form select,
-        .search-form button {
-            padding: 10px;
-            margin-right: 10px;
-            font-size: 1em;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background-color: white;
-        }
-        th, td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: #f4f4f4;
-        }
-        .actions button {
-            margin-right: 5px;
-            padding: 5px 10px;
-            background-color: #16a085;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-        .actions button:hover {
-            background-color: #1abc9c;
-        }
-        .actions .delete {
-            background-color: #e74c3c;
-        }
-        .actions .delete:hover {
-            background-color: #c0392b;
-        }
-        .link-button {
-            background-color: #3498db;
-            color: white;
-            padding: 5px 10px;
-            text-decoration: none;
-            border-radius: 3px;
-        }
-        .link-button:hover {
-            background-color: #2980b9;
-        }
-    </style>
-</head>
-<body>
-    <!-- Navbar -->
-    <nav>
-        <a href="index.php" class="actif"><img src="../src/home.png" alt="Accueil">Accueil</a>
-        <a href="entreprise.php"><img src="../src/entreprise.png" alt="Entreprise">Entreprise</a>
-        <a href="stagiaire.php"><img src="../src/stage.png" alt="Stagiaire">Stagiaire</a>
-        <a href="#"><img src="../src/inscrire.png" alt="Inscription">Inscription</a>
-        <a href="#"><img src="../src/aide.png" alt="Aide">Aide</a>
-        <a href="#"><img src="../src/deconnexion.png" alt="Déconnexion">Déconnexion</a>
-    </nav>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			/* Styles adaptés depuis entreprise.twig */
+			html,
+			body {
+				height: 100%;
+				margin: 0;
+				font-family: 'Courier New', Verdana, sans-serif;
+			}
+			body {
+				background-color: #f0f0f0;
+				display: flex;
+				justify-content: flex-start;
+				align-items: flex-start;
+			}
+			nav {
+				background-color: #222;
+				width: 290px;
+				height: 100vh;
+				position: fixed;
+				top: 0;
+				left: 0;
+				color: white;
+				border-right: 5px solid #4CAF50;
+				display: flex;
+				flex-direction: column;
+				padding-top: 20px;
+			}
+			nav a {
+				display: flex;
+				align-items: center;
+				padding: 17px 20px;
+				text-decoration: none;
+				color: white;
+				font-size: 1.3em;
+				white-space: nowrap;
+			}
+			nav a img {
+				width: 20px;
+				height: auto;
+				margin-right: 10px;
+			}
+			nav a.actif {
+				background-color: #4CAF50;
+			}
+			nav a:hover {
+				background-color: #404040;
+			}
+			.content {
+				margin-left: 290px;
+				padding: 20px;
+				width: calc(100% - 290px);
+			}
+			.search-form {
+				margin-bottom: 20px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			.search-form input,
+			.search-form select,
+			.search-form button {
+				padding: 10px;
+				margin-right: 10px;
+				font-size: 1em;
+			}
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				margin-top: 20px;
+				background-color: white;
+			}
+			th,
+			td {
+				border: 1px solid #ccc;
+				padding: 10px;
+				text-align: left;
+			}
+			th {
+				background-color: #f4f4f4;
+			}
+			.actions button {
+				margin-right: 5px;
+				padding: 5px 10px;
+				background-color: #16a085;
+				color: white;
+				border: none;
+				border-radius: 3px;
+				cursor: pointer;
+			}
+			.actions button:hover {
+				background-color: #1abc9c;
+			}
+			.actions .delete {
+				background-color: #e74c3c;
+			}
+			.actions .delete:hover {
+				background-color: #c0392b;
+			}
+			.link-button {
+				background-color: #3498db;
+				color: white;
+				padding: 5px 10px;
+				text-decoration: none;
+				border-radius: 3px;
+			}
+			.link-button:hover {
+				background-color: #2980b9;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Navbar -->
+		<nav>
+			<a href="index.php" class="actif"><img src="../src/home.png" alt="Accueil">Accueil</a>
+			<a href="entreprise.php"><img src="../src/entreprise.png" alt="Entreprise">Entreprise</a>
+			<a href="stagiaire.php"><img src="../src/stage.png" alt="Stagiaire">Stagiaire</a>
+			<a href="#"><img src="../src/inscrire.png" alt="Inscription">Inscription</a>
+			<a href="#"><img src="../src/aide.png" alt="Aide">Aide</a>
+			<a href="#"><img src="../src/deconnexion.png" alt="Déconnexion">Déconnexion</a>
+		</nav>
 
-    <!-- Contenu principal -->
-    <div class="content">
-        <!-- Formulaire de recherche -->
-        <form class="search-form" method="GET" action="rechercher_entreprise.php">
-            <input type="text" name="nom" placeholder="Nom de l'entreprise" />
-            <select name="specialite">
-                <option value="">Toutes les spécialités</option>
-                <option value="SLAM">SLAM</option>
-                <option value="SISR">SISR</option>
-                <option value="AM">AM</option>
-                <option value="SN">SN</option>
-                <option value="CG">CG</option>
-                <option value="NRC">NRC</option>
-            </select>
-            <select name="niveau">
-                <option value="">Tous les niveaux</option>
-                <option value="BAC+1">BAC+1</option>
-                <option value="BAC+1/BAC+2">BAC+1/BAC+2</option>
-                <option value="BAC+2">BAC+2</option>
-            </select>
-            <button type="submit">Rechercher</button>
-        </form>
+		<!-- Contenu principal -->
+		<div
+			class="content">
+			<!-- Formulaire de recherche -->
+			<form class="search-form" method="GET" action="entreprise_trie.php">
+				<input type="text" name="nom" placeholder="Nom de l'entreprise"/>
+				<select name="specialite">
+					<option value="">Toutes les spécialités</option>
+					<option value="SLAM">SLAM</option>
+					<option value="SISR">SISR</option>
+					<option value="AM">AM</option>
+					<option value="SN">SN</option>
+					<option value="CG">CG</option>
+					<option value="NRC">NRC</option>
+				</select>
+				<select name="niveau">
+					<option value="">Tous les niveaux</option>
+					<option value="BAC+1">BAC+1</option>
+					<option value="BAC+1/BAC+2">BAC+1/BAC+2</option>
+					<option value="BAC+2">BAC+2</option>
+				</select>
+				<button type="submit">Rechercher</button>
+			</form>
 
-        <!-- Tableau des entreprises -->
-        <table>
-            <thead>
-                <tr>
-                    <th>Opération</th>
-                    <th>Entreprise</th>
-                    <th>Responsable</th>
-                    <th>Adresse</th>
-                    <th>Site</th>
-                    <th>Spécialité</th>
-                </tr>
-            </thead>
-        </table>
-    </div>
-</body>
+			<!-- Tableau des entreprises -->
+			<table>
+				<thead>
+					<tr>
+						<th>Opération</th>
+						<th>Entreprise</th>
+						<th>Responsable</th>
+						<th>Adresse</th>
+						<th>Site</th>
+						<th>Spécialité</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+	</body>
 </html>
