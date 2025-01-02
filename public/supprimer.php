@@ -11,7 +11,3 @@ if ($_SESSION['user']['role'] !== 'enseignant') {
     echo "Accès refusé. Cette page est réservée aux enseignants.";
     exit;
 }
-
-echo $twig->render('stagiaire.twig', [
-    'nom' => 'Utilisateur',
-]);
