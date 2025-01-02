@@ -156,85 +156,10 @@
 		<!-- Contenu principal -->
 		<div class="content">
 			<div class="button-group">
-				<button onclick="window.location.href='rechercher_entreprise.php';">Rechercher une entreprise</button>
-				<button onclick="window.location.href='ajouter_entreprise.php';">Ajouter une entreprise</button>
+				<button>Rechercher une entreprise</button>
+				<button>Ajouter une entreprise</button>
 			</div>
 
-			<table>
-				<thead>
-					<tr>
-						<th>Opération</th>
-						<th>Entreprise</th>
-						<th>Responsable</th>
-						<th>Adresse</th>
-						<th>Site</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td class="actions">
-							<button>Détails</button>
-							<button>Inscription</button>
-							<button>Modifier</button>
-							<button class="delete">Supprimer</button>
-						</td>
-						<td>Entreprise A</td>
-						<td>Jean Dupont</td>
-						<td>123 Rue de Paris</td>
-						<td>
-							<a href="http://exemple.com" class="link-button">Visiter</a>
-						</td>
-					</tr>
-					<tr>
-						<td class="actions">
-							<button>Détails</button>
-							<button>Inscription</button>
-							<button>Modifier</button>
-							<button class="delete">Supprimer</button>
-						</td>
-						<td>Entreprise B</td>
-						<td>Marie Curie</td>
-						<td>456 Avenue des Champs</td>
-						<td></td>
-					</tr>
-				</tbody>
-			</table>
 		</div>
-
-		<table>
-			<thead>
-				<tr>
-					<th>raison_sociale</th>
-					<th>nom_contact</th>
-					<th>nom_resp</th>
-					<th>rue_entreprise</th>
-					<th>cp_entreprise</th>
-					<th>ville_entreprise</th>
-					<th>fax_entreprise</th>
-					<th>email</th>
-					<th>observation</th>
-					<th>site_entreprise</th>
-					<th>niveau</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for entreprise in entreprises %}
-					<tr>
-						<td>{{ entreprise.raison_sociale }}</td>
-						<td>{{ entreprise.nom_contact }}</td>
-						<td>{{ entreprise.nom_resp }}</td>
-						<td>{{ entreprise.rue_entreprise }}</td>
-						<td>{{ entreprise.cp_entreprise }}</td>
-						<td>{{ entreprise.ville_entreprise }}</td>
-						<td>{{ entreprise.fax_entreprise }}</td>
-						<td>{{ entreprise.email }}</td>
-						<td>{{ entreprise.observation }}</td>
-						<td>{{ entreprise.site_entreprise }}</td>
-						<td>{{ entreprise.niveau }}</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-
 	</body>
 </html>
