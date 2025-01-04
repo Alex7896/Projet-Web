@@ -6,7 +6,8 @@
 		<title>Rechercher un stagiaire</title>
 		<style>
 			/* Vos styles existants repris ici */
-			html, body {
+			html,
+			body {
 				height: 100%;
 				margin: 0;
 				font-family: 'Courier New', Verdana, sans-serif;
@@ -71,7 +72,8 @@
 				box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 			}
 
-			.search-form select, .search-form button {
+			.search-form select,
+			.search-form button {
 				padding: 10px;
 				margin-right: 10px;
 				font-size: 1em;
@@ -96,7 +98,8 @@
 				background-color: white;
 			}
 
-			th, td {
+			th,
+			td {
 				border: 1px solid #ccc;
 				padding: 10px;
 				text-align: left;
@@ -121,30 +124,34 @@
 		<div class="content">
 			<h1>Rechercher un stagiaire</h1>
 			<div class="search-form">
-				<form>
-					<label for="student-name">Nom de l'étudiant :</label>
-					<select id="student-name">
+				<form method="GET" action="rechercher_stagiaire.php">
+					<label for="etudiant">Nom de l'étudiant :</label>
+					<select name="etudiant" id="etudiant">
 						<option value="">Sélectionner</option>
-						<option value="etudiant1">Étudiant 1</option>
-						<option value="etudiant2">Étudiant 2</option>
+						{% for etudiant in etudiants %}
+							<option value="{{ etudiant.nom_etudiant }}">{{ etudiant.nom_etudiant }}</option>
+						{% endfor %}
 					</select>
 
-					<label for="company-name">Entreprise :</label>
-					<select id="company-name">
+					<label for="entreprise">Entreprise :</label>
+					<select name="entreprise" id="entreprise">
 						<option value="">Sélectionner</option>
-						<option value="entreprise1">Entreprise 1</option>
-						<option value="entreprise2">Entreprise 2</option>
+						{% for entreprise in entreprises %}
+							<option value="{{ entreprise.raison_sociale }}">{{ entreprise.raison_sociale }}</option>
+						{% endfor %}
 					</select>
 
-					<label for="professor-name">Nom du professeur :</label>
-					<select id="professor-name">
+					<label for="professeur">Nom du professeur :</label>
+					<select name="professeur" id="professeur">
 						<option value="">Sélectionner</option>
-						<option value="professeur1">Professeur 1</option>
-						<option value="professeur2">Professeur 2</option>
+						{% for professeur in professeurs %}
+							<option value="{{ professeur.nom_prof }}">{{ professeur.nom_prof }}</option>
+						{% endfor %}
 					</select>
 
 					<button type="submit">Rechercher</button>
 				</form>
+
 			</div>
 
 			<table>
@@ -156,18 +163,22 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>Étudiant 1</td>
-						<td>Entreprise 1</td>
-						<td>Professeur 1</td>
-					</tr>
-					<tr>
-						<td>Étudiant 2</td>
-						<td>Entreprise 2</td>
-						<td>Professeur 2</td>
-					</tr>
+					{% if results is not empty %}
+						{% for result in results %}
+							<tr>
+								<td>{{ result.etudiant }}</td>
+								<td>{{ result.entreprise }}</td>
+								<td>{{ result.professeur }}</td>
+							</tr>
+						{% endfor %}
+					{% else %}
+						<tr>
+							<td colspan="3">Aucun résultat trouvé</td>
+						</tr>
+					{% endif %}
 				</tbody>
 			</table>
+
 		</div>
 	</body>
 </html>
