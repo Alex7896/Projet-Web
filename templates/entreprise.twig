@@ -189,11 +189,18 @@
 				<tbody>
 					{% for entreprise in entreprises %}
 						<tr>
+							<!-- C'est ici que vous insérez le HTML pour les actions -->
 							<td class="actions">
 								<button onclick="window.location.href='details_entreprise.php?num_entreprise={{ entreprise.num_entreprise }}'" class="btn btn-primary"><img src="../src/voir.png"></button>
 								<button><img src="../src/inscrire.png"></button>
 								<button><img src="../src/modifier.png"></button>
-								<button class="delete"><img src="../src/supprimer.png"></button>
+								<!-- Ajouter le formulaire pour supprimer -->
+								<form action="supprimer_entreprise.php" method="POST" style="display: inline;">
+									<input type="hidden" name="num_entreprise" value="{{ entreprise.num_entreprise }}">
+									<button type="submit" class="delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette entreprise ?');">
+										<img src="../src/supprimer.png">
+									</button>
+								</form>
 							</td>
 							<td>{{ entreprise.raison_sociale }}</td>
 							<td>{{ entreprise.nom_resp }}</td>
@@ -209,6 +216,7 @@
 				</tbody>
 			</table>
 		</div>
+
 
 	</body>
 </html>
