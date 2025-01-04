@@ -104,14 +104,27 @@
 				background-color: #f4f4f4;
 			}
 
+			/* Styles des actions */
+			.actions {
+				display: flex; /* Aligne les boutons horizontalement */
+				gap: 5px; /* Ajoute un espacement entre les boutons */
+			}
+
 			.actions button {
-				margin-right: 5px;
-				padding: 5px 10px;
+				padding: 5px; /* Garde les boutons compacts */
 				background-color: #16a085;
 				color: white;
 				border: none;
 				border-radius: 3px;
 				cursor: pointer;
+				display: flex; /* Centre l'icône à l'intérieur du bouton */
+				align-items: center;
+				justify-content: center;
+			}
+
+			.actions button img {
+				width: 30px;
+				height: 30px;
 			}
 
 			.actions button:hover {
@@ -138,6 +151,8 @@
 				background-color: #2980b9;
 			}
 		</style>
+
+
 	</head>
 	<body>
 
@@ -175,12 +190,10 @@
 					{% for entreprise in entreprises %}
 						<tr>
 							<td class="actions">
-								<button onclick="window.location.href='details_entreprise.php?num_entreprise={{ entreprise.num_entreprise }}'" class="btn btn-primary">
-									Détails
-								</button>
-								<button>Inscription</button>
-								<button>Modifier</button>
-								<button class="delete">Supprimer</button>
+								<button onclick="window.location.href='details_entreprise.php?num_entreprise={{ entreprise.num_entreprise }}'" class="btn btn-primary"><img src="../src/voir.png"></button>
+								<button><img src="../src/inscrire.png"></button>
+								<button><img src="../src/modifier.png"></button>
+								<button class="delete"><img src="../src/supprimer.png"></button>
 							</td>
 							<td>{{ entreprise.raison_sociale }}</td>
 							<td>{{ entreprise.nom_resp }}</td>

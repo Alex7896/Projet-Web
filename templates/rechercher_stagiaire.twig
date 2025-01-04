@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Rechercher un stagiaire</title>
+		<style>
+			/* Vos styles existants repris ici */
+			html, body {
+				height: 100%;
+				margin: 0;
+				font-family: 'Courier New', Verdana, sans-serif;
+			}
+
+			body {
+				background-color: #f0f0f0;
+				display: flex;
+				justify-content: flex-start;
+				align-items: flex-start;
+			}
+
+			nav {
+				background-color: #222;
+				width: 290px;
+				height: 100vh;
+				position: fixed;
+				top: 0;
+				left: 0;
+				color: white;
+				border-right: 5px solid #4CAF50;
+				display: flex;
+				flex-direction: column;
+				padding-top: 20px;
+			}
+
+			nav a {
+				display: flex;
+				align-items: center;
+				padding: 17px 20px;
+				text-decoration: none;
+				color: white;
+				font-size: 1.3em;
+			}
+
+			nav a img {
+				width: 20px;
+				height: auto;
+				margin-right: 10px;
+			}
+
+			nav a.actif {
+				background-color: #4CAF50;
+			}
+
+			nav a:hover {
+				background-color: #404040;
+			}
+
+			.content {
+				margin-left: 290px;
+				padding: 20px;
+				width: calc(100% - 290px);
+			}
+
+			.search-form {
+				margin-bottom: 20px;
+				background-color: white;
+				padding: 15px;
+				border: 1px solid #ccc;
+				border-radius: 5px;
+				box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+			}
+
+			.search-form select, .search-form button {
+				padding: 10px;
+				margin-right: 10px;
+				font-size: 1em;
+			}
+
+			button {
+				background-color: #4CAF50;
+				color: white;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+			}
+
+			button:hover {
+				background-color: #45a049;
+			}
+
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				margin-top: 20px;
+				background-color: white;
+			}
+
+			th, td {
+				border: 1px solid #ccc;
+				padding: 10px;
+				text-align: left;
+			}
+
+			th {
+				background-color: #f4f4f4;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Navbar -->
+		<nav>
+			<a href="index.php"><img src="../src/home.png" alt="Accueil">Accueil</a>
+			<a href="entreprise.php"><img src="../src/entreprise.png" alt="Entreprise">Entreprise</a>
+			<a href="stagiaire.php" class="actif"><img src="../src/stage.png" alt="Stagiaire">Stagiaire</a>
+			<a href="#"><img src="../src/inscrire.png" alt="Inscription">Inscription</a>
+			<a href="#"><img src="../src/aide.png" alt="Aide">Aide</a>
+			<a href="#"><img src="../src/deconnexion.png" alt="Déconnexion">Déconnexion</a>
+		</nav>
+
+		<div class="content">
+			<h1>Rechercher un stagiaire</h1>
+			<div class="search-form">
+				<form>
+					<label for="student-name">Nom de l'étudiant :</label>
+					<select id="student-name">
+						<option value="">Sélectionner</option>
+						<option value="etudiant1">Étudiant 1</option>
+						<option value="etudiant2">Étudiant 2</option>
+					</select>
+
+					<label for="company-name">Entreprise :</label>
+					<select id="company-name">
+						<option value="">Sélectionner</option>
+						<option value="entreprise1">Entreprise 1</option>
+						<option value="entreprise2">Entreprise 2</option>
+					</select>
+
+					<label for="professor-name">Nom du professeur :</label>
+					<select id="professor-name">
+						<option value="">Sélectionner</option>
+						<option value="professeur1">Professeur 1</option>
+						<option value="professeur2">Professeur 2</option>
+					</select>
+
+					<button type="submit">Rechercher</button>
+				</form>
+			</div>
+
+			<table>
+				<thead>
+					<tr>
+						<th>Nom Étudiant</th>
+						<th>Entreprise</th>
+						<th>Nom du Professeur</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Étudiant 1</td>
+						<td>Entreprise 1</td>
+						<td>Professeur 1</td>
+					</tr>
+					<tr>
+						<td>Étudiant 2</td>
+						<td>Entreprise 2</td>
+						<td>Professeur 2</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>
