@@ -193,30 +193,31 @@
 							<td class="actions">
 								<button onclick="window.location.href='details_entreprise.php?num_entreprise={{ entreprise.num_entreprise }}'" class="btn btn-primary"><img src="../src/voir.png"></button>
 								<button><img src="../src/inscrire.png"></button>
-								<button><img src="../src/modifier.png"></button>
-								<!-- Ajouter le formulaire pour supprimer -->
-								<form action="supprimer_entreprise.php" method="POST" style="display: inline;">
-									<input type="hidden" name="num_entreprise" value="{{ entreprise.num_entreprise }}">
-									<button type="submit" class="delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette entreprise ?');">
-										<img src="../src/supprimer.png">
-									</button>
+								{% if role == 'enseignant' %}
+									<button><img src="../src/modifier.png"></button>
+									<!-- Ajouter le formulaire pour supprimer -->
+									<form action="supprimer_entreprise.php" method="POST" style="display: inline;">
+										<input type="hidden" name="num_entreprise" value="{{ entreprise.num_entreprise }}">
+
+										<button type="submit" class="delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette entreprise ?');">
+											<img src="../src/supprimer.png">
+										</button>
+									{% endif %}
 								</form>
 							</td>
-							<td>{{ entreprise.raison_sociale }}</td>
-							<td>{{ entreprise.nom_resp }}</td>
-							<td>{{ entreprise.rue_entreprise }}</td>
-							<td>
-								{% if entreprise.site_entreprise %}
-									<a href="{{ entreprise.site_entreprise }}" class="link-button">Visiter</a>
-								{% endif %}
-							</td>
-							<td>{{ entreprise.specialite_libelle }}</td>
 						</tr>
-					{% endfor %}
+					</td>
+					<td>{{ entreprise.raison_sociale }}</td>
+					<td>{{ entreprise.nom_resp }}</td>
+					<td>{{ entreprise.rue_entreprise }}</td>
+					<td>
+						{% if entreprise.site_entreprise %}
+							<a href="{{ entreprise.site_entreprise }}" class="link-button">Visiter</a>
+						{% endif %}
+					</td>
+					<td>{{ entreprise.specialite_libelle }}</td>
 				</tbody>
-			</table>
-		</div>
-
-
+			</tr>
+		{% endfor %}
 	</body>
-</html>
+</html></tbody></table></div></body></html>

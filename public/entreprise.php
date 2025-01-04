@@ -8,6 +8,9 @@ if (!isset($_SESSION['user'])) {
     exit;
 }
 
+// Vérifiez le rôle de l'utilisateur
+$role = $_SESSION['user']['role'];
+
 
 require_once '../vendor/autoload.php'; // Inclure le loader de Twig
 require_once 'connect.php'; // Fichier de connexion à la base de données
@@ -33,4 +36,5 @@ $twig = new \Twig\Environment($loader);
 // Rendre le template Twig avec les données
 echo $twig->render('entreprise.twig', [
     'entreprises' => $entreprises,
+    'role' => $role,
 ]);
