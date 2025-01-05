@@ -107,6 +107,12 @@
 			}
 
 			/* Fixe la largeur des colonnes */
+			th,
+			td {
+				width: auto; /* Ajuste automatiquement la largeur pour éviter le débordement */
+			}
+
+			/* Largeur spécifique pour chaque colonne */
 			.actions-eleve,
 			.actions-enseignant {
 				width: 120px;
@@ -178,42 +184,33 @@
 					</tr>
 				</thead>
 				<tbody>
-					{% for etudiant in etudiants %}
-						<tr>
-							<!-- Colonne pour l'élève -->
-							<td class="actions-eleve">
-								<div class="actions">
-									<button>
-										<img src="../src/voir.png" alt="Voir">
-									</button>
-								</div>
-							</td>
+					<tr>
+						<!-- Colonne pour l'élève -->
+						<td class="actions-eleve">
+							<div class="actions">
+								<button>
+									<img src="../src/voir.png" alt="Voir">
+								</button>
+							</div>
+						</td>
 
-							<!-- Colonne pour l'enseignant -->
-							<td class="actions-enseignant">
-								<div class="actions">
-									<button>
-										<img src="../src/modifier.png" alt="Modifier">
-									</button>
-									<button class="delete">
-										<img src="../src/supprimer.png" alt="Supprimer">
-									</button>
-								</div>
-							</td>
+						<!-- Colonne pour l'enseignant -->
+						<td class="actions-enseignant">
+							<div class="actions">
+								<button>
+									<img src="../src/modifier.png" alt="Modifier">
+								</button>
+								<button class="delete">
+									<img src="../src/supprimer.png" alt="Supprimer">
+								</button>
+							</div>
+						</td>
 
-							<!-- Informations dynamiques -->
-							<td>{{ etudiant.nom_etudiant }}</td>
-							<td>{{ etudiant.nom_entreprise is not null ? etudiant.nom_entreprise : 'Pas de stage' }}</td>
-							<td>
-								{% if etudiant.nom_prof is not null %}
-									{{ etudiant.prenom_prof }}
-									{{ etudiant.nom_prof }}
-								{% else %}
-									Pas de professeur
-								{% endif %}
-							</td>
-						</tr>
-					{% endfor %}
+						<!-- Informations sur l'étudiant -->
+						<td>Jean Dupont</td>
+						<td>Google</td>
+						<td>Prof. Martin</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
