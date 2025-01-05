@@ -1,179 +1,191 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Détails du stagiaire - {{ stagiaire.nom }} {{ stagiaire.prenom }}</title>
-    <link rel="stylesheet" href="path_to_your_css_file.css">
-  </head>
-  <style>
-    /* Réinitialisation de la hauteur et des marges */
-    html,
-    body {
-      height: 100%;
-      margin: 0;
-      font-family: 'Courier New', Verdana, sans-serif;
-    }
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Détails du stagiaire -
+			{{ stagiaire.nom }}
+			{{ stagiaire.prenom }}</title>
+		<link rel="stylesheet" href="path_to_your_css_file.css">
+	</head>
+	<style>
+		/* Réinitialisation de la hauteur et des marges */
+		html,
+		body {
+			height: 100%;
+			margin: 0;
+			font-family: 'Courier New', Verdana, sans-serif;
+		}
 
-    body {
-      background-color: #f0f0f0;
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-    }
+		body {
+			background-color: #f0f0f0;
+			display: flex;
+			justify-content: flex-start;
+			align-items: flex-start;
+		}
 
-    /* Style de la navbar */
-    nav {
-      background-color: #222;
-      width: 290px;
-      height: 100vh;
-      position: fixed;
-      top: 0;
-      left: 0;
-      color: white;
-      border-right: 5px solid #4CAF50;
-      display: flex;
-      flex-direction: column;
-      padding-top: 20px;
-    }
+		/* Style de la navbar */
+		nav {
+			background-color: #222;
+			width: 290px;
+			height: 100vh;
+			position: fixed;
+			top: 0;
+			left: 0;
+			color: white;
+			border-right: 5px solid #4CAF50;
+			display: flex;
+			flex-direction: column;
+			padding-top: 20px;
+		}
 
-    nav a {
-      display: flex;
-      align-items: center;
-      padding: 17px 20px;
-      text-decoration: none;
-      color: white;
-      font-size: 1.3em;
-      white-space: nowrap;
-    }
+		nav a {
+			display: flex;
+			align-items: center;
+			padding: 17px 20px;
+			text-decoration: none;
+			color: white;
+			font-size: 1.3em;
+			white-space: nowrap;
+		}
 
-    nav a img {
-      width: 20px;
-      height: auto;
-      margin-right: 10px;
-    }
+		nav a img {
+			width: 20px;
+			height: auto;
+			margin-right: 10px;
+		}
 
-    nav a.actif {
-      background-color: #4CAF50;
-    }
+		nav a.actif {
+			background-color: #4CAF50;
+		}
 
-    nav a:hover {
-      background-color: #404040;
-    }
+		nav a:hover {
+			background-color: #404040;
+		}
 
-    /* Contenu principal */
-    .content {
-      margin-left: 290px;
-      padding: 20px;
-      width: calc(100% - 290px);
-    }
+		/* Contenu principal */
+		.content {
+			margin-left: 290px;
+			padding: 20px;
+			width: calc(100% - 290px);
+		}
 
-    /* Titres principaux */
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-      color: #333;
-    }
+		/* Titres principaux */
+		h1 {
+			font-size: 2.5em;
+			margin-bottom: 20px;
+			color: #333;
+		}
 
-    h2 {
-      font-size: 2em;
-      margin-bottom: 15px;
-      color: #2c3e50;
-    }
+		h2 {
+			font-size: 2em;
+			margin-bottom: 15px;
+			color: #2c3e50;
+		}
 
-    /* Section encadrée */
-    section {
-      margin-bottom: 40px;
-      padding: 20px;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
+		/* Section encadrée */
+		section {
+			margin-bottom: 40px;
+			padding: 20px;
+			background-color: white;
+			border-radius: 8px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
 
-    section ul {
-      list-style-type: none;
-    }
+		section ul {
+			list-style-type: none;
+		}
 
-    section ul li {
-      font-size: 1.2em;
-      margin-bottom: 10px;
-    }
+		section ul li {
+			font-size: 1.2em;
+			margin-bottom: 10px;
+		}
 
-    section ul li strong {
-      color: #2980b9;
-    }
+		section ul li strong {
+			color: #2980b9;
+		}
 
-    /* Style des champs de formulaire */
-    input[type="text"],
-    select {
-      width: 100%;
-      padding: 8px;
-      margin: 5px 0;
-      box-sizing: border-box;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-    }
+		/* Style des champs de formulaire */
+		input[type="text"],
+		select {
+			width: 100%;
+			padding: 8px;
+			margin: 5px 0;
+			box-sizing: border-box;
+			border-radius: 4px;
+			border: 1px solid #ccc;
+		}
 
-    select {
-      font-size: 1em;
-    }
+		select {
+			font-size: 1em;
+		}
 
-    /* Bouton */
-    button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 20px;
-    }
+		/* Bouton */
+		button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			margin-top: 20px;
+		}
 
-    button:hover {
-      background-color: #45a049;
-    }
+		button:hover {
+			background-color: #45a049;
+		}
 
-    /* Marges pour les sections */
-    section h3 {
-      margin-top: 20px;
-      font-size: 1.5em;
-      color: #2c3e50;
-    }
+		/* Marges pour les sections */
+		section h3 {
+			margin-top: 20px;
+			font-size: 1.5em;
+			color: #2c3e50;
+		}
 
-    section p {
-      margin-top: 10px;
-      font-size: 1.2em;
-      color: #333;
-    }
-  </style>
-  <body>
-    <!-- Navbar -->
-    <nav>
-      <a href="index.php" class="actif"><img src="../src/home.png" alt="Accueil">Accueil</a>
-      <a href="entreprise.php"><img src="../src/entreprise.png" alt="Entreprise">Entreprise</a>
-      <a href="stagiaire.php"><img src="../src/stage.png" alt="Stagiaire">Stagiaire</a>
-      <a href="#"><img src="../src/inscrire.png" alt="Inscription">Inscription</a>
-      <a href="#"><img src="../src/aide.png" alt="Aide">Aide</a>
-      <a href="#"><img src="../src/deconnexion.png" alt="Déconnexion">Déconnexion</a>
-      <div style="margin-top: auto;">
-        <a href="#"><img src="../src/droite.png" alt="Développer">Développer</a>
-        <a href="#"><img src="../src/gauche.png" alt="Réduire">Réduire</a>
-      </div>
-    </nav>
+		section p {
+			margin-top: 10px;
+			font-size: 1.2em;
+			color: #333;
+		}
+	</style>
+	<body>
+		<!-- Navbar -->
+		<nav>
+			<a href="index.php" class="actif"><img src="../src/home.png" alt="Accueil">Accueil</a>
+			<a href="entreprise.php"><img src="../src/entreprise.png" alt="Entreprise">Entreprise</a>
+			<a href="stagiaire.php"><img src="../src/stage.png" alt="Stagiaire">Stagiaire</a>
+			<a href="#"><img src="../src/inscrire.png" alt="Inscription">Inscription</a>
+			<a href="#"><img src="../src/aide.png" alt="Aide">Aide</a>
+			<a href="#"><img src="../src/deconnexion.png" alt="Déconnexion">Déconnexion</a>
+			<div style="margin-top: auto;">
+				<a href="#"><img src="../src/droite.png" alt="Développer">Développer</a>
+				<a href="#"><img src="../src/gauche.png" alt="Réduire">Réduire</a>
+			</div>
+		</nav>
 
-    <!-- Contenu principal -->
-    <div class="content">
-      <h1>Détails du stagiaire: {{ stagiaire.nom }} {{ stagiaire.prenom }}</h1>
+		<!-- Contenu principal -->
+		<div class="content">
+			<h1>Détails du stagiaire :
+				{{ stagiaire.nom }}
+				{{ stagiaire.prenom }}</h1>
 
-      <!-- Partie Information -->
-      <section>
-        <h2>Information</h2>
-        <ul>
-          <li><strong>Nom de l'étudiant :</strong> {{ stagiaire.nom }} {{ stagiaire.prenom }}</li>
-          <li><strong>Nom de l'entreprise :</strong> {{ stagiaire.entreprise.raison_sociale }}</li>
-          <li><strong>Nom du professeur :</strong> {{ stagiaire.professeur.nom }} {{ stagiaire.professeur.prenom }}</li>
-        </ul>
-      </section>
-    </div>
-  </body>
+			<!-- Partie Information -->
+			<section>
+				<h2>Informations</h2>
+				<ul>
+					<li>
+						<strong>Nom de l'étudiant :</strong>
+						{{ stagiaire.nom }}
+						{{ stagiaire.prenom }}</li>
+					<li>
+						<strong>Nom de l'entreprise :</strong>
+						{{ stagiaire.entreprise }}</li>
+					<li>
+						<strong>Nom du professeur :</strong>
+						{{ stagiaire.prenom_prof }}
+						{{ stagiaire.nom_prof }}</li>
+				</ul>
+			</section>
+		</div>
+	</body>
 </html>

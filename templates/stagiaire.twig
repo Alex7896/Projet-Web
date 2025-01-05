@@ -185,9 +185,13 @@
 							<!-- Colonne pour l'élève -->
 							<td class="actions-eleve">
 								<div class="actions">
-									<button>
-										<img src="../src/voir.png" alt="Voir">
-									</button>
+									<form action="details_stagiaire.php" method="GET" style="display: inline;">
+										<input type="hidden" name="id_stagiaire" value="{{ etudiant.num_etudiant }}">
+										<button type="submit">
+											<img src="../src/voir.png" alt="Voir">
+										</button>
+									</form>
+
 								</div>
 							</td>
 
