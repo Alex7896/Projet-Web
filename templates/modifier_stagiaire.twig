@@ -1,160 +1,166 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* Réinitialisation de la hauteur et des marges */
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            font-family: 'Courier New', Verdana, sans-serif;
-        }
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			/* Réinitialisation de la hauteur et des marges */
+			html,
+			body {
+				height: 100%;
+				margin: 0;
+				font-family: 'Courier New', Verdana, sans-serif;
+			}
 
-        body {
-            background-color: #f0f0f0;
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-        }
+			body {
+				background-color: #f0f0f0;
+				display: flex;
+				justify-content: flex-start;
+				align-items: flex-start;
+			}
 
-        /* Style de la navbar */
-        nav {
-            background-color: #222;
-            width: 290px;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            color: white;
-            border-right: 5px solid #4CAF50;
-            display: flex;
-            flex-direction: column;
-            padding-top: 20px;
-        }
+			/* Style de la navbar */
+			nav {
+				background-color: #222;
+				width: 290px;
+				height: 100vh;
+				position: fixed;
+				top: 0;
+				left: 0;
+				color: white;
+				border-right: 5px solid #4CAF50;
+				display: flex;
+				flex-direction: column;
+				padding-top: 20px;
+			}
 
-        nav a {
-            display: flex;
-            align-items: center;
-            padding: 17px 20px;
-            text-decoration: none;
-            color: white;
-            font-size: 1.3em;
-            white-space: nowrap;
-        }
+			nav a {
+				display: flex;
+				align-items: center;
+				padding: 17px 20px;
+				text-decoration: none;
+				color: white;
+				font-size: 1.3em;
+				white-space: nowrap;
+			}
 
-        nav a img {
-            width: 20px;
-            height: auto;
-            margin-right: 10px;
-        }
+			nav a img {
+				width: 20px;
+				height: auto;
+				margin-right: 10px;
+			}
 
-        nav a.actif {
-            background-color: #4CAF50;
-        }
+			nav a.actif {
+				background-color: #4CAF50;
+			}
 
-        nav a:hover {
-            background-color: #404040;
-        }
+			nav a:hover {
+				background-color: #404040;
+			}
 
-        /* Contenu principal */
-        .content {
-            margin-left: 290px;
-            padding: 20px;
-            width: calc(100% - 290px);
-        }
+			/* Contenu principal */
+			.content {
+				margin-left: 290px;
+				padding: 20px;
+				width: calc(100% - 290px);
+			}
 
-        /* Style des tableaux */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background-color: white;
-        }
+			/* Style des tableaux */
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				margin-top: 20px;
+				background-color: white;
+			}
 
-        th,
-        td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: left;
-        }
+			th,
+			td {
+				border: 1px solid #ccc;
+				padding: 10px;
+				text-align: left;
+			}
 
-        th {
-            background-color: #f4f4f4;
-        }
+			th {
+				background-color: #f4f4f4;
+			}
 
-        input[type="text"],
-        select {
-            width: 100%;
-            padding: 8px;
-            margin: 5px 0;
-            box-sizing: border-box;
-        }
+			input[type="text"],
+			select {
+				width: 100%;
+				padding: 8px;
+				margin: 5px 0;
+				box-sizing: border-box;
+			}
 
-        select {
-            font-size: 1em;
-        }
+			select {
+				font-size: 1em;
+			}
 
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
+			button {
+				background-color: #4CAF50;
+				color: white;
+				padding: 10px 20px;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				margin-top: 20px;
+			}
 
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
-</head>
-<body>
+			button:hover {
+				background-color: #45a049;
+			}
+		</style>
+	</head>
+	<body>
 
-    <!-- Navbar -->
-    <nav>
-        <a href="index.php" class="actif"><img src="../src/home.png" alt="Accueil">Accueil</a>
-        <a href="entreprise.php"><img src="../src/entreprise.png" alt="Entreprise">Entreprise</a>
-        <a href="stagiaire.php"><img src="../src/stage.png" alt="Stagiaire">Stagiaire</a>
-        <a href="#"><img src="../src/inscrire.png" alt="Inscription">Inscription</a>
-        <a href="#"><img src="../src/aide.png" alt="Aide">Aide</a>
-        <a href="#"><img src="../src/deconnexion.png" alt="Déconnexion">Déconnexion</a>
-        <a href="#"><img src="../src/droite.png" alt="Développer">Développer</a>
-        <a href="#"><img src="../src/gauche.png" alt="Réduire">Réduire</a>
-    </nav>
+		<!-- Navbar -->
+		<nav>
+			<a href="index.php" class="actif"><img src="../src/home.png" alt="Accueil">Accueil</a>
+			<a href="entreprise.php"><img src="../src/entreprise.png" alt="Entreprise">Entreprise</a>
+			<a href="stagiaire.php"><img src="../src/stage.png" alt="Stagiaire">Stagiaire</a>
+			<a href="#"><img src="../src/inscrire.png" alt="Inscription">Inscription</a>
+			<a href="#"><img src="../src/aide.png" alt="Aide">Aide</a>
+			<a href="#"><img src="../src/deconnexion.png" alt="Déconnexion">Déconnexion</a>
+			<a href="#"><img src="../src/droite.png" alt="Développer">Développer</a>
+			<a href="#"><img src="../src/gauche.png" alt="Réduire">Réduire</a>
+		</nav>
 
-    <!-- Contenu principal -->
-    <div class="content">
-        <h1>Modification des informations du stagiaire</h1>
-        <form action="ajouter_stagiaire.php" method="POST">
-            <!-- Tableau 1: Informations -->
-            <table>
-                <thead>
-                    <tr>
-                        <th colspan="2">Informations</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Etudiant</td>
-                        <td><input type="text" name="etudiant"></td>
-                    </tr>
-                    <tr>
-                        <td>Entreprise</td>
-                        <td><input type="text" name="entreprise"></td>
-                    </tr>
-                    <tr>
-                        <td>Professeur</td>
-                        <td><input type="text" name="professeur"></td>
-                    </tr>
-                </tbody>
-            </table>
+		<!-- Contenu principal -->
+		<div class="content">
+			<h1>Modification des informations de l'étudiant</h1>
+			<form action="update_stagiaire.php" method="POST">
+				<input type="hidden" name="num_etudiant" value="{{ etudiant.num_etudiant }}">
+				<table>
+					<thead>
+						<tr>
+							<th colspan="2">Informations</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Nom</td>
+							<td>
+								<input type="text" name="nom_etudiant" value="{{ etudiant.nom_etudiant }}" required>
+							</td>
+						</tr>
+						<tr>
+							<td>Prénom</td>
+							<td>
+								<input type="text" name="prenom_etudiant" value="{{ etudiant.prenom_etudiant }}" required>
+							</td>
+						</tr>
+						<tr>
+							<td>Classe</td>
+							<td>
+								<input type="text" name="num_classe" value="{{ etudiant.num_classe }}">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<button type="submit">Enregistrer</button>
+			</form>
 
-            <!-- Bouton de validation -->
-            <button type="submit">Enregistrer les modifications</button>
-        </form>
-    </div>
-</body>
+
+		</div>
+	</body>
 </html>
