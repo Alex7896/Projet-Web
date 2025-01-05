@@ -131,8 +131,15 @@
 			<form
 				action="modifier_entreprise.php" method="POST">
 				<!-- Tableau 1: Information -->
-				<input type="hidden" name="num_entreprise" value="{{ entreprise.num_entreprise }}">
+				<input
+				type="hidden" name="num_entreprise" value="{{ entreprise.num_entreprise }}">
+				<!-- Champ caché pour l'identifiant de la spécialité -->
+				<input type="hidden" name="num_spec_actuelle" value="{{ specialite_associee.num_spec }}">
 
+				<p>
+					Actuelle :
+					{{ specialite_associee.libelle }}
+				</p>
 				<table>
 					<thead>
 						<tr>
@@ -142,6 +149,8 @@
 					<tbody>
 						<tr>
 							<td>Nom de l'entreprise</td>
+							<td>{{ specialite.num_spec }}</td>
+							<td></td>
 							<td><input type="text" name="raison_sociale" value="{{ entreprise.raison_sociale }}">
 							</td>
 						</tr>
@@ -225,15 +234,18 @@
 						<tr>
 							<td>Spécialité</td>
 							<td>
-								<select name="specialites[]" multiple>
-									<option value="1">SLAM</option>
-									<option value="2">SISR</option>
-									<option value="3">AM</option>
-									<option value="4">SN</option>
-									<option value="5">CG</option>
-									<option value="6">NRC</option>
+								<p>Spécialité actuelle :
+									{{ specialite_associee }}</p>
+								<select name="specialite">
+									<option value="" disabled>-- Sélectionnez une spécialité --</option>
+									<option value="SLAM" {% if specialite_associee == 'SLAM' %} selected {% endif %}>SLAM</option>
+									<option value="SISR" {% if specialite_associee == 'SISR' %} selected {% endif %}>SISR</option>
+									<option value="AM" {% if specialite_associee == 'AM' %} selected {% endif %}>AM</option>
+									<option value="SN" {% if specialite_associee == 'SN' %} selected {% endif %}>SN</option>
 								</select>
+
 							</td>
+
 						</tr>
 					</tbody>
 				</table>

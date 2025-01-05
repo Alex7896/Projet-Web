@@ -152,12 +152,14 @@
 	<body>
 		<!-- Navbar -->
 		<nav>
-			<a href="#" class="actif"><img src="../src/home.png" alt="Accueil">Accueil</a>
-			<a href="#"><img src="../src/entreprise.png" alt="Entreprise">Entreprise</a>
-			<a href="#"><img src="../src/stage.png" alt="Stagiaire">Stagiaire</a>
-			<a href="#"><img src="../src/inscrire.png" alt="Inscription">Inscription</a>
+			<a href="index.php" class="actif"><img src="../src/home.png" alt="Accueil">Accueil</a>
+			<a href="entreprise.php"><img src="../src/entreprise.png" alt="Entreprise">Entreprise</a>
+			<a href="stagiaire.php"><img src="../src/stage.png" alt="Stagiaire">Stagiaire</a>
+			<a href="inscription.php"><img src="../src/inscrire.png" alt="Inscription">Inscription</a>
 			<a href="#"><img src="../src/aide.png" alt="Aide">Aide</a>
 			<a href="#"><img src="../src/deconnexion.png" alt="Déconnexion">Déconnexion</a>
+			<a href="#"><img src="../src/droite.png" alt="Développer">Développer</a>
+			<a href="#"><img src="../src/gauche.png" alt="Réduire">Réduire</a>
 		</nav>
 
 		<!-- Contenu principal -->
@@ -183,26 +185,48 @@
 							<!-- Colonne pour l'élève -->
 							<td class="actions-eleve">
 								<div class="actions">
-									<button>
-										<img src="../src/voir.png" alt="Voir">
-									</button>
+									<form action="details_stagiaire.php" method="GET" style="display: inline;">
+										<input type="hidden" name="id_stagiaire" value="{{ etudiant.num_etudiant }}">
+										<button type="submit">
+											<img src="../src/voir.png" alt="Voir">
+										</button>
+									</form>
+
 								</div>
 							</td>
 
 							<!-- Colonne pour l'enseignant -->
 							<td class="actions-enseignant">
 								<div class="actions">
-									<button>
-										<img src="../src/modifier.png" alt="Modifier">
-									</button>
-									<button class="delete">
-										<img src="../src/supprimer.png" alt="Supprimer">
-									</button>
+									<form
+										action="modifier_stagiaire.php" method="GET" style="display: inline;">
+										<!-- Champ caché avec l'ID du stagiaire -->
+										<input type="hidden" name="id_stagiaire" value="{{ etudiant.num_etudiant }}">
+										<input type="hidden" name="nom_etudiant" value="{{ etudiant.nom_etudiant }}">
+										<input
+										type="hidden" name="prenom_etudiant" value="{{ etudiant.prenom_etudiant }}">
+
+										<!-- Bouton de modification -->
+										<button type="submit">
+											<img src="../src/modifier.png" alt="Modifier">
+										</button>
+									</form>
+
+									<form action="supprimer_stagiaire.php" method="POST" style="display: inline;">
+										<input type="hidden" name="id_stagiaire" value="{{ etudiant.num_etudiant }}">
+										<button type="submit" class="delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce stagiaire ?');">
+											<img src="../src/supprimer.png" alt="Supprimer">
+										</button>
+									</form>
 								</div>
 							</td>
 
 							<!-- Informations dynamiques -->
-							<td>{{ etudiant.nom_etudiant }}</td>
+							<td>
+								{{ etudiant.nom_etudiant }}
+								<p>ID du stagiaire :
+									{{ etudiant.num_etudiant }}</p>
+							</td>
 							<td>{{ etudiant.nom_entreprise is not null ? etudiant.nom_entreprise : 'Pas de stage' }}</td>
 							<td>
 								{% if etudiant.nom_prof is not null %}
@@ -215,6 +239,7 @@
 						</tr>
 					{% endfor %}
 				</tbody>
+
 			</table>
 		</div>
 	</body>

@@ -1,24 +1,25 @@
 <?php
 session_start();
 
+// Vérifier si l'utilisateur est connecté
 if (!isset($_SESSION['user'])) {
     header("Location: login.php");
     exit;
 }
 
-// Vérifiez le rôle
+// Vérifier le rôle de l'utilisateur
 if ($_SESSION['user']['role'] !== 'enseignant') {
     echo "Accès refusé. Cette page est réservée aux enseignants.";
     exit;
 }
 
 require_once '../vendor/autoload.php';
-require_once 'connect.php'; // Fichier de connexion à la base de données
+require_once 'connect.php'; // Connexion à la base de données
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $num_entreprise = isset($_POST['num_entreprise']) ? $_POST['num_entreprise'] : null;
+    // Récupérer l'ID de l'entreprise
+    $num_entreprise = $_POST['num_entreprise'] ?? null;
 
-    // Vérifier que l'ID de l'entreprise est présent
     if (!$num_entreprise) {
         die("L'identifiant de l'entreprise est manquant.");
     }
@@ -78,16 +79,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Exécuter la requête
         $stmt->execute();
 
-        // Mettre à jour la spécialité dans la table `spec_entreprise`
-        $query_specialite = "
-            UPDATE spec_entreprise
-            SET num_spec = (SELECT num_spec FROM specialite WHERE libelle = :specialite LIMIT 1)
-            WHERE num_entreprise = :num_entreprise
-        ";
-        $stmt_specialite = $pdo->prepare($query_specialite);
-        $stmt_specialite->bindParam(':specialite', $specialite);
-        $stmt_specialite->bindParam(':num_entreprise', $num_entreprise);
-        $stmt_specialite->execute();
+        // Mettre à jour la spécialité
+        if ($specialite) {
+            $query_specialite = "
+                DELETE FROM spec_entreprise
+                WHERE num_entreprise = :num_entreprise;
+            ";
+            $stmt_delete = $pdo->prepare($query_specialite);
+            $stmt_delete->bindParam(':num_entreprise', $num_entreprise);
+            $stmt_delete->execute();
+
+            $query_insert_specialite = "
+                INSERT INTO spec_entreprise (num_entreprise, num_spec)
+                VALUES (:num_entreprise, (SELECT num_spec FROM specialite WHERE libelle = :specialite LIMIT 1))
+            ";
+            $stmt_specialite = $pdo->prepare($query_insert_specialite);
+            $stmt_specialite->bindParam(':num_entreprise', $num_entreprise);
+            $stmt_specialite->bindParam(':specialite', $specialite);
+            $stmt_specialite->execute();
+        }
 
         // Rediriger après la mise à jour
         header("Location: entreprise.php");
@@ -101,14 +111,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $loader = new \Twig\Loader\FilesystemLoader('../templates');
 $twig = new \Twig\Environment($loader);
 
-// Récupérer l'entreprise à modifier
+// Récupérer l'entreprise et la spécialité actuelle
 $num_entreprise = $_GET['num_entreprise'] ?? null;
+$specialite = $_GET['specialite'] ?? null;
 
-if (!$num_entreprise) {
-    die("Identifiant de l'entreprise manquant.");
+if (!$num_entreprise || !$specialite) {
+    die("Identifiant de l'entreprise ou spécialité manquant.");
 }
 
 try {
+    // Récupérer les informations de l'entreprise
     $query = "SELECT * FROM entreprise WHERE num_entreprise = :num_entreprise";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':num_entreprise', $num_entreprise);
@@ -118,11 +130,11 @@ try {
     if (!$entreprise) {
         die("Entreprise introuvable.");
     }
+
+    echo $twig->render('modifier_entreprise.twig', [
+        'entreprise' => $entreprise,
+        'specialite_associee' => $specialite
+    ]);
 } catch (PDOException $e) {
     die("Erreur lors de la récupération de l'entreprise : " . $e->getMessage());
 }
-
-// Passer les données au template Twig
-echo $twig->render('modifier_entreprise.twig', [
-    'entreprise' => $entreprise
-]);
