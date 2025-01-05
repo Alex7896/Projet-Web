@@ -212,9 +212,12 @@
 										</button>
 									</form>
 
-									<button class="delete">
-										<img src="../src/supprimer.png" alt="Supprimer">
-									</button>
+									<form action="supprimer_stagiaire.php" method="POST" style="display: inline;">
+										<input type="hidden" name="id_stagiaire" value="{{ etudiant.num_etudiant }}">
+										<button type="submit" class="delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce stagiaire ?');">
+											<img src="../src/supprimer.png" alt="Supprimer">
+										</button>
+									</form>
 								</div>
 							</td>
 
