@@ -196,7 +196,7 @@
 								<button onclick="window.location.href='details_entreprise.php?num_entreprise={{ entreprise.num_entreprise }}'" class="btn btn-primary"><img src="../src/voir.png"></button>
 								<button><img src="../src/inscrire.png"></button>
 								{% if role == 'enseignant' %}
-									<button onclick="window.location.href='modifier_entreprise.php';"><img src="../src/modifier.png"></button>
+									<button onclick="window.location.href='modifier_entreprise.php?num_entreprise={{ entreprise.num_entreprise }}'"><img src="../src/modifier.png"></button>
 									<!-- Ajouter le formulaire pour supprimer -->
 									<form action="supprimer_entreprise.php" method="POST" style="display: inline;">
 										<input type="hidden" name="num_entreprise" value="{{ entreprise.num_entreprise }}">
