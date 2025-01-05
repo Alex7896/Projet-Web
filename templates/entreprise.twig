@@ -172,7 +172,9 @@
 		<div class="content">
 			<div class="button-group">
 				<button onclick="window.location.href='rechercher_entreprise.php';">Rechercher une entreprise</button>
-				<button onclick="window.location.href='ajouter_entreprise.php';">Ajouter une entreprise</button>
+				{% if role == 'enseignant' %}
+					<button onclick="window.location.href='ajouter_entreprise.php';">Ajouter une entreprise</button>
+				{% endif %}
 			</div>
 
 			<table>
@@ -194,7 +196,7 @@
 								<button onclick="window.location.href='details_entreprise.php?num_entreprise={{ entreprise.num_entreprise }}'" class="btn btn-primary"><img src="../src/voir.png"></button>
 								<button><img src="../src/inscrire.png"></button>
 								{% if role == 'enseignant' %}
-									<button><img src="../src/modifier.png"></button>
+									<button onclick="window.location.href='modifier_entreprise.php?num_entreprise={{ entreprise.num_entreprise }}'"><img src="../src/modifier.png"></button>
 									<!-- Ajouter le formulaire pour supprimer -->
 									<form action="supprimer_entreprise.php" method="POST" style="display: inline;">
 										<input type="hidden" name="num_entreprise" value="{{ entreprise.num_entreprise }}">
@@ -207,17 +209,17 @@
 							</td>
 						</tr>
 					</td>
-					<td>{{ entreprise.raison_sociale }}</td>
-					<td>{{ entreprise.nom_resp }}</td>
-					<td>{{ entreprise.rue_entreprise }}</td>
-					<td>
-						{% if entreprise.site_entreprise %}
-							<a href="{{ entreprise.site_entreprise }}" class="link-button">Visiter</a>
-						{% endif %}
-					</td>
-					<td>{{ entreprise.specialite_libelle }}</td>
 				</tbody>
 			</tr>
-		{% endfor %}
+		</td>
+		<td>{{ entreprise.raison_sociale }}</td>
+		<td>{{ entreprise.nom_resp }}</td>
+		<td>{{ entreprise.rue_entreprise }}</td>
+		<td>
+			{% if entreprise.site_entreprise %}
+				<a href="{{ entreprise.site_entreprise }}" class="link-button">Visiter</a>
+			{% endif %}
+		</td>
+		<td>{{ entreprise.specialite_libelle }}</td>
 	</body>
-</html></tbody></table></div></body></html>
+</html></tbody></tr>{% endfor %}</body></html></tbody></table></div></body> </html>
