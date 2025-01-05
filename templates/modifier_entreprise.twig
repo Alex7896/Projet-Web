@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			/* Réinitialisation de la hauteur et des marges */
+			html,
+			body {
+				height: 100%;
+				margin: 0;
+				font-family: 'Courier New', Verdana, sans-serif;
+			}
+
+			body {
+				background-color: #f0f0f0;
+				display: flex;
+				justify-content: flex-start;
+				align-items: flex-start;
+			}
+
+			/* Style de la navbar */
+			nav {
+				background-color: #222;
+				width: 290px;
+				height: 100vh;
+				position: fixed;
+				top: 0;
+				left: 0;
+				color: white;
+				border-right: 5px solid #4CAF50;
+				display: flex;
+				flex-direction: column;
+				padding-top: 20px;
+			}
+
+			nav a {
+				display: flex;
+				align-items: center;
+				padding: 17px 20px;
+				text-decoration: none;
+				color: white;
+				font-size: 1.3em;
+				white-space: nowrap;
+			}
+
+			nav a img {
+				width: 20px;
+				height: auto;
+				margin-right: 10px;
+			}
+
+			nav a.actif {
+				background-color: #4CAF50;
+			}
+
+			nav a:hover {
+				background-color: #404040;
+			}
+
+			/* Contenu principal */
+			.content {
+				margin-left: 290px;
+				padding: 20px;
+				width: calc(100% - 290px);
+			}
+
+			/* Style des tableaux */
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				margin-top: 20px;
+				background-color: white;
+			}
+
+			th,
+			td {
+				border: 1px solid #ccc;
+				padding: 10px;
+				text-align: left;
+			}
+
+			th {
+				background-color: #f4f4f4;
+			}
+
+			input[type="text"],
+			select {
+				width: 100%;
+				padding: 8px;
+				margin: 5px 0;
+				box-sizing: border-box;
+			}
+
+			select {
+				font-size: 1em;
+			}
+
+			button {
+				background-color: #4CAF50;
+				color: white;
+				padding: 10px 20px;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				margin-top: 20px;
+			}
+
+			button:hover {
+				background-color: #45a049;
+			}
+		</style>
+	</head>
+	<body>
+
+		<!-- Navbar -->
+		<nav>
+			<a href="index.php" class="actif"><img src="../src/home.png" alt="Accueil">Accueil</a>
+			<a href="entreprise.php"><img src="../src/entreprise.png" alt="Entreprise">Entreprise</a>
+			<a href="stagiaire.php"><img src="../src/stage.png" alt="Stagiaire">Stagiaire</a>
+			<a href="#"><img src="../src/inscrire.png" alt="Inscription">Inscription</a>
+			<a href="#"><img src="../src/aide.png" alt="Aide">Aide</a>
+			<a href="#"><img src="../src/deconnexion.png" alt="Déconnexion">Déconnexion</a>
+			<a href="#"><img src="../src/droite.png" alt="Développer">Développer</a>
+			<a href="#"><img src="../src/gauche.png" alt="Réduire">Réduire</a>
+		</nav>
+
+		<!-- Contenu principal -->
+		<div class="content">
+			<h1>Ajouter une entreprise</h1>
+			<form
+				action="ajouter_entreprise.php" method="POST">
+				<!-- Tableau 1: Information -->
+				<table>
+					<thead>
+						<tr>
+							<th colspan="2">Information</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Nom de l'entreprise</td>
+							<td><input type="text" name="raison_sociale" required></td>
+						</tr>
+						<tr>
+							<td>Nom du contact</td>
+							<td><input type="text" name="nom_contact" required></td>
+						</tr>
+						<tr>
+							<td>Nom du responsable</td>
+							<td><input type="text" name="nom_resp" required></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<!-- Tableau 2: Contact -->
+				<table>
+					<thead>
+						<tr>
+							<th colspan="2">Contact</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Rue</td>
+							<td><input type="text" name="rue" required></td>
+						</tr>
+						<tr>
+							<td>Code Postal</td>
+							<td><input type="text" name="cp" required></td>
+						</tr>
+						<tr>
+							<td>Ville</td>
+							<td><input type="text" name="ville" required></td>
+						</tr>
+						<tr>
+							<td>Téléphone</td>
+							<td><input type="text" name="telephone" required></td>
+						</tr>
+						<tr>
+							<td>Fax</td>
+							<td><input type="text" name="fax" required></td>
+						</tr>
+						<tr>
+							<td>Email</td>
+							<td><input type="text" name="email" required></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<!-- Tableau 3: Divers -->
+				<table>
+					<thead>
+						<tr>
+							<th colspan="2">Divers</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Observation</td>
+							<td><input type="text" name="observation"></td>
+						</tr>
+						<tr>
+							<td>URL du site</td>
+							<td><input type="text" name="site"></td>
+						</tr>
+						<tr>
+							<td>Niveau</td>
+							<td><input type="text" name="niveau"></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<!-- Tableau 4: Spécialité -->
+				<table>
+					<thead>
+						<tr>
+							<th colspan="2">Spécialité</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Spécialité</td>
+							<td>
+								<select name="specialite" required>
+									<option value="SLAM">SLAM</option>
+									<option value="SISR">SISR</option>
+									<option value="AM">AM</option>
+									<option value="SN">SN</option>
+									<option value="CG">CG</option>
+									<option value="NRC">NRC</option>
+								</select>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- Bouton de validation -->
+				<button type="submit">Enregistrer les modifications</button>
+			</form>
+
+
+		</div>
+	</body>
+</html></body></html>
