@@ -1,214 +1,221 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Gestion des Stagiaires</title>
-	<style>
-		/* Réinitialisation de la hauteur et des marges */
-		html, body {
-			height: 100%;
-			margin: 0;
-			font-family: 'Courier New', Verdana, sans-serif;
-		}
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Gestion des Stagiaires</title>
+		<style>
+			/* Réinitialisation de la hauteur et des marges */
+			html,
+			body {
+				height: 100%;
+				margin: 0;
+				font-family: 'Courier New', Verdana, sans-serif;
+			}
 
-		body {
-			background-color: #f0f0f0;
-			display: flex;
-			justify-content: flex-start;
-			align-items: flex-start;
-		}
+			body {
+				background-color: #f0f0f0;
+				display: flex;
+				justify-content: flex-start;
+				align-items: flex-start;
+			}
 
-		/* Style de la navbar */
-		nav {
-			background-color: #222;
-			width: 290px;
-			height: 100vh;
-			position: fixed;
-			top: 0;
-			left: 0;
-			color: white;
-			border-right: 5px solid #4CAF50;
-			display: flex;
-			flex-direction: column;
-			padding-top: 20px;
-		}
+			/* Style de la navbar */
+			nav {
+				background-color: #222;
+				width: 290px;
+				height: 100vh;
+				position: fixed;
+				top: 0;
+				left: 0;
+				color: white;
+				border-right: 5px solid #4CAF50;
+				display: flex;
+				flex-direction: column;
+				padding-top: 20px;
+			}
 
-		nav a {
-			display: flex;
-			align-items: center;
-			padding: 17px 20px;
-			text-decoration: none;
-			color: white;
-			font-size: 1.3em;
-			white-space: nowrap;
-		}
+			nav a {
+				display: flex;
+				align-items: center;
+				padding: 17px 20px;
+				text-decoration: none;
+				color: white;
+				font-size: 1.3em;
+				white-space: nowrap;
+			}
 
-		nav a img {
-			width: 20px;
-			height: auto;
-			margin-right: 10px;
-		}
+			nav a img {
+				width: 20px;
+				height: auto;
+				margin-right: 10px;
+			}
 
-		nav a.actif {
-			background-color: #4CAF50;
-		}
+			nav a.actif {
+				background-color: #4CAF50;
+			}
 
-		nav a:hover {
-			background-color: #404040;
-		}
+			nav a:hover {
+				background-color: #404040;
+			}
 
-		/* Contenu principal */
-		.content {
-			margin-left: 290px;
-			padding: 20px;
-			width: calc(100% - 290px);
-		}
+			/* Contenu principal */
+			.content {
+				margin-left: 290px;
+				padding: 20px;
+				width: calc(100% - 290px);
+			}
 
-		/* Style des boutons en haut */
-		.button-group {
-			display: flex;
-			justify-content: space-between;
-			margin-bottom: 20px;
-		}
+			/* Style des boutons en haut */
+			.button-group {
+				display: flex;
+				justify-content: space-between;
+				margin-bottom: 20px;
+			}
 
-		.button-group button {
-			padding: 10px 15px;
-			background-color: #3498db;
-			color: white;
-			border: none;
-			border-radius: 5px;
-			cursor: pointer;
-		}
+			.button-group button {
+				padding: 10px 15px;
+				background-color: #3498db;
+				color: white;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+			}
 
-		.button-group button:hover {
-			background-color: #2980b9;
-		}
+			.button-group button:hover {
+				background-color: #2980b9;
+			}
 
-		/* Style du tableau */
-		table {
-			width: 100%;
-			border-collapse: collapse;
-			margin-top: 20px;
-			background-color: white;
-		}
+			/* Style du tableau */
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				margin-top: 20px;
+				background-color: white;
+			}
 
-		th, td {
-			border: 1px solid #ccc;
-			padding: 10px;
-			text-align: center;
-			vertical-align: middle; /* Centre le contenu verticalement */
-		}
+			th,
+			td {
+				border: 1px solid #ccc;
+				padding: 10px;
+				text-align: center;
+				vertical-align: middle; /* Centre le contenu verticalement */
+			}
 
-		th {
-			background-color: #f4f4f4;
-		}
+			th {
+				background-color: #f4f4f4;
+			}
 
-		/* Fixe la largeur des colonnes */
-		th, td {
-			width: auto; /* Ajuste automatiquement la largeur pour éviter le débordement */
-		}
+			/* Fixe la largeur des colonnes */
+			.actions-eleve,
+			.actions-enseignant {
+				width: 120px;
+			}
 
-		/* Largeur spécifique pour chaque colonne */
-		.actions-eleve, .actions-enseignant {
-			width: 120px;
-		}
+			/* Style des boutons dans les colonnes actions */
+			.actions {
+				display: flex;
+				justify-content: center;
+				gap: 10px; /* Espacement entre les boutons */
+			}
 
-		/* Style des boutons dans les colonnes actions */
-		.actions {
-			display: flex;
-			justify-content: center;
-			gap: 10px; /* Espacement entre les boutons */
-		}
+			.actions button {
+				padding: 5px;
+				background-color: #16a085;
+				color: white;
+				border: none;
+				border-radius: 3px;
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
 
-		.actions button {
-			padding: 5px;
-			background-color: #16a085;
-			color: white;
-			border: none;
-			border-radius: 3px;
-			cursor: pointer;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
+			.actions button img {
+				width: 20px;
+				height: 20px;
+			}
 
-		.actions button img {
-			width: 20px;
-			height: 20px;
-		}
+			.actions button:hover {
+				background-color: #1abc9c;
+			}
 
-		.actions button:hover {
-			background-color: #1abc9c;
-		}
+			.actions .delete {
+				background-color: #e74c3c;
+			}
 
-		.actions .delete {
-			background-color: #e74c3c;
-		}
+			.actions .delete:hover {
+				background-color: #c0392b;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Navbar -->
+		<nav>
+			<a href="#" class="actif"><img src="../src/home.png" alt="Accueil">Accueil</a>
+			<a href="#"><img src="../src/entreprise.png" alt="Entreprise">Entreprise</a>
+			<a href="#"><img src="../src/stage.png" alt="Stagiaire">Stagiaire</a>
+			<a href="#"><img src="../src/inscrire.png" alt="Inscription">Inscription</a>
+			<a href="#"><img src="../src/aide.png" alt="Aide">Aide</a>
+			<a href="#"><img src="../src/deconnexion.png" alt="Déconnexion">Déconnexion</a>
+		</nav>
 
-		.actions .delete:hover {
-			background-color: #c0392b;
-		}
-	</style>
-</head>
-<body>
-	<!-- Navbar -->
-	<nav>
-		<a href="#" class="actif"><img src="../src/home.png" alt="Accueil">Accueil</a>
-		<a href="#"><img src="../src/entreprise.png" alt="Entreprise">Entreprise</a>
-		<a href="#"><img src="../src/stage.png" alt="Stagiaire">Stagiaire</a>
-		<a href="#"><img src="../src/inscrire.png" alt="Inscription">Inscription</a>
-		<a href="#"><img src="../src/aide.png" alt="Aide">Aide</a>
-		<a href="#"><img src="../src/deconnexion.png" alt="Déconnexion">Déconnexion</a>
-	</nav>
+		<!-- Contenu principal -->
+		<div class="content">
+			<div class="button-group">
+				<button>Rechercher un stagiaire existant</button>
+				<button>Ajouter un étudiant</button>
+			</div>
 
-	<!-- Contenu principal -->
-	<div class="content">
-		<div class="button-group">
-			<button>Rechercher un stagiaire existant</button>
-			<button>Ajouter un étudiant</button>
+			<table>
+				<thead>
+					<tr>
+						<th class="actions-eleve">Action</th>
+						<th class="actions-enseignant">Action</th>
+						<th>Étudiant</th>
+						<th>Entreprise</th>
+						<th>Professeur</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for etudiant in etudiants %}
+						<tr>
+							<!-- Colonne pour l'élève -->
+							<td class="actions-eleve">
+								<div class="actions">
+									<button>
+										<img src="../src/voir.png" alt="Voir">
+									</button>
+								</div>
+							</td>
+
+							<!-- Colonne pour l'enseignant -->
+							<td class="actions-enseignant">
+								<div class="actions">
+									<button>
+										<img src="../src/modifier.png" alt="Modifier">
+									</button>
+									<button class="delete">
+										<img src="../src/supprimer.png" alt="Supprimer">
+									</button>
+								</div>
+							</td>
+
+							<!-- Informations dynamiques -->
+							<td>{{ etudiant.nom_etudiant }}</td>
+							<td>{{ etudiant.nom_entreprise is not null ? etudiant.nom_entreprise : 'Pas de stage' }}</td>
+							<td>
+								{% if etudiant.nom_prof is not null %}
+									{{ etudiant.prenom_prof }}
+									{{ etudiant.nom_prof }}
+								{% else %}
+									Pas de professeur
+								{% endif %}
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
 		</div>
-
-		<table>
-			<thead>
-				<tr>
-					<th class="actions-eleve">Action</th>
-					<th class="actions-enseignant">Action</th>
-					<th>Étudiant</th>
-					<th>Entreprise</th>
-					<th>Professeur</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<!-- Colonne pour l'élève -->
-					<td class="actions-eleve">
-						<div class="actions">
-							<button>
-								<img src="../src/voir.png" alt="Voir">
-							</button>
-						</div>
-					</td>
-
-					<!-- Colonne pour l'enseignant -->
-					<td class="actions-enseignant">
-						<div class="actions">
-							<button>
-								<img src="../src/modifier.png" alt="Modifier">
-							</button>
-							<button class="delete">
-								<img src="../src/supprimer.png" alt="Supprimer">
-							</button>
-						</div>
-					</td>
-
-					<!-- Informations sur l'étudiant -->
-					<td>Jean Dupont</td>
-					<td>Google</td>
-					<td>Prof. Martin</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</body>
+	</body>
 </html>
