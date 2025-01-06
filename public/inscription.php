@@ -52,7 +52,11 @@ try {
 }
 
 
-// Configurez Twig
+// Récupérer les messages de succès ou d'erreur
+$success_message = isset($_GET['success']) ? "L'ajout a été effectué avec succès." : null;
+$error_message = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : null;
+
+// Configurer Twig
 $loader = new \Twig\Loader\FilesystemLoader('../templates'); // Dossier des templates
 $twig = new \Twig\Environment($loader);
 
@@ -61,4 +65,6 @@ echo $twig->render('inscription.twig', [
     'etudiants' => $etudiants,
     'entreprises' => $entreprises,
     'professeurs' => $professeurs,
+    'success_message' => $success_message,
+    'error_message' => $error_message,
 ]);
