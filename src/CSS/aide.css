@@ -54,7 +54,6 @@ nav a:hover {
 
 /* Contenu principal (à droite de la navbar) */
 .content {
-    margin-left: 290px;
     padding: 20px;
     width: 100%;
 }
