@@ -1,0 +1,62 @@
+/* Réinitialisation de la hauteur et des marges */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Courier New', Verdana, sans-serif;
+}
+
+body {
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/* Style de la navbar */
+nav {
+    background-color: #222;
+    width: 290px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: white;
+    border-right: 5px solid #4CAF50;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+nav a {
+    display: flex; /* Utilisation de flexbox pour aligner l'image et le texte */
+    align-items: center; /* Aligner verticalement l'image et le texte */
+    padding: 17px 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 1.3em;
+    white-space: nowrap;
+}
+
+nav a img {
+    width: 20px; /* Taille de l'image */
+    height: auto; /* Hauteur automatique pour garder les proportions */
+    margin-right: 10px; /* Espacement entre l'image et le texte */
+}
+
+nav a.actif {
+    background-color: #4CAF50;
+}
+
+nav a:hover {
+    background-color: #404040;
+}
+
+/* Contenu principal (à droite de la navbar) */
+.content {
+    margin-left: 290px;
+    padding: 20px;
+    width: 100%;
+}
+
+
