@@ -12,53 +12,60 @@ if ($_SESSION['user']['role'] !== 'enseignant') {
     exit;
 }
 
-require_once '../vendor/autoload.php'; // Chargez Twig
+require_once '../vendor/autoload.php'; // Charger Twig
 require_once 'connect.php'; // Connexion à la base de données
 
+// Initialisation des variables
+$etudiants = [];
+$entreprises = [];
+$professeurs = [];
+$success_message = null;
+$error_message = null;
+
 try {
-    // Requête pour récupérer les étudiants actifs
+    // Récupérer les étudiants actifs
     $query = "SELECT num_etudiant, nom_etudiant, prenom_etudiant FROM etudiant WHERE en_activite = 1";
     $stmt = $pdo->query($query);
-    $etudiants = $stmt->fetchAll(PDO::FETCH_ASSOC); // Récupère les résultats
+    $etudiants = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    die("Erreur lors de la récupération des étudiants : " . $e->getMessage());
+    $error_message = "Erreur lors de la récupération des étudiants : " . $e->getMessage();
 }
 
 try {
-    // Requête pour récupérer les entreprises
+    // Récupérer les entreprises
     $query = "SELECT num_entreprise, raison_sociale FROM entreprise";
     $stmt = $pdo->query($query);
-    $entreprises = $stmt->fetchAll(PDO::FETCH_ASSOC); // Récupérer les résultats sous forme de tableau associatif
+    $entreprises = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    die("Erreur lors de la récupération des entreprises : " . $e->getMessage());
+    $error_message = "Erreur lors de la récupération des entreprises : " . $e->getMessage();
 }
 
 try {
-    // Requête pour récupérer les entreprises
-    $query = "SELECT num_entreprise, raison_sociale FROM entreprise";
-    $stmt = $pdo->query($query);
-    $entreprises = $stmt->fetchAll(PDO::FETCH_ASSOC); // Récupérer les résultats sous forme de tableau associatif
-} catch (PDOException $e) {
-    die("Erreur lors de la récupération des entreprises : " . $e->getMessage());
-}
-
-try {
-    // Requête pour récupérer les professeurs
+    // Récupérer les professeurs
     $query = "SELECT num_prof, nom_prof, prenom_prof FROM professeur";
     $stmt = $pdo->query($query);
-    $professeurs = $stmt->fetchAll(PDO::FETCH_ASSOC); // Récupère les données sous forme de tableau associatif
+    $professeurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    die("Erreur lors de la récupération des professeurs : " . $e->getMessage());
+    $error_message = "Erreur lors de la récupération des professeurs : " . $e->getMessage();
 }
 
+// Récupérer les messages de succès ou d'erreur
+if (isset($_GET['success'])) {
+    $success_message = "L'ajout a été effectué avec succès.";
+}
+if (isset($_GET['error'])) {
+    $error_message = htmlspecialchars($_GET['error']);
+}
 
-// Configurez Twig
-$loader = new \Twig\Loader\FilesystemLoader('../templates'); // Dossier des templates
+// Configurer Twig
+$loader = new \Twig\Loader\FilesystemLoader('../templates'); // Chemin des templates Twig
 $twig = new \Twig\Environment($loader);
 
-// Rendre le template Twig en passant les données
+// Rendre le template Twig avec les données
 echo $twig->render('inscription.twig', [
     'etudiants' => $etudiants,
     'entreprises' => $entreprises,
     'professeurs' => $professeurs,
+    'success_message' => $success_message,
+    'error_message' => $error_message,
 ]);

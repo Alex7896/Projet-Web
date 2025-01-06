@@ -10,9 +10,7 @@ if (!isset($_SESSION['user'])) {
     exit;
 }
 
-
 require_once '../vendor/autoload.php'; // Inclure le loader de Twig
-require_once 'connect.php'; // Fichier de connexion à la base de données
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupérer les valeurs du formulaire
@@ -54,11 +52,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Location: inscription.php?success=1');
             exit;
         } catch (PDOException $e) {
-            die("Erreur lors de l'ajout : " . $e->getMessage());
+            // Redirection avec message d'erreur
+            $error_message = urlencode("Erreur lors de l'ajout : " . $e->getMessage());
+            header("Location: inscription.php?error=$error_message");
+            exit;
         }
     } else {
-        echo "Veuillez remplir tous les champs requis.";
+        // Redirection avec message d'erreur
+        $error_message = urlencode("Veuillez remplir tous les champs requis.");
+        header("Location: inscription.php?error=$error_message");
+        exit;
     }
 } else {
-    echo "Méthode de requête non autorisée.";
+    // Méthode non autorisée
+    $error_message = urlencode("Méthode de requête non autorisée.");
+    header("Location: inscription.php?error=$error_message");
+    exit;
 }
