@@ -1,7 +1,7 @@
 <?php
 require_once '../vendor/autoload.php';
 
-require_once 'connect.php'; // Inclure la connexion à la base de données
+require_once 'connect.php';
 
 
 // Configuration de Twig

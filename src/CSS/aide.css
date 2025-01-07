@@ -1,19 +1,18 @@
-/* Réinitialisation de la hauteur et des marges */
-html,
-body {
+/* Style général */
+html, body {
     height: 100%;
     margin: 0;
     font-family: 'Courier New', Verdana, sans-serif;
+    background-color: #f0f0f0;
 }
 
 body {
-    background-color: #f0f0f0;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
 }
 
-/* Style de la navbar */
+/* Navbar */
 nav {
     background-color: #222;
     width: 290px;
@@ -29,8 +28,8 @@ nav {
 }
 
 nav a {
-    display: flex; /* Utilisation de flexbox pour aligner l'image et le texte */
-    align-items: center; /* Aligner verticalement l'image et le texte */
+    display: flex;
+    align-items: center;
     padding: 17px 20px;
     text-decoration: none;
     color: white;
@@ -39,9 +38,8 @@ nav a {
 }
 
 nav a img {
-    width: 20px; /* Taille de l'image */
-    height: auto; /* Hauteur automatique pour garder les proportions */
-    margin-right: 10px; /* Espacement entre l'image et le texte */
+    width: 20px;
+    margin-right: 10px;
 }
 
 nav a.actif {
@@ -52,10 +50,52 @@ nav a:hover {
     background-color: #404040;
 }
 
-/* Contenu principal (à droite de la navbar) */
+/* Contenu principal */
 .content {
+    margin-left: 290px;
     padding: 20px;
-    width: 100%;
+    width: calc(100% - 290px);
 }
 
+/* Boîtes d'information */
+.box {
+    background-color: white;
+    border: 3px solid #4CAF50;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
+.box h2 {
+    color: #4CAF50;
+}
+
+.box ul {
+    margin: 10px 0 0 20px;
+    padding: 0;
+}
+
+.info-box {
+    background-color: #e3f2fd;
+    border: 3px solid #2196f3;
+    color: #2196f3;
+}
+
+.success-box {
+    background-color: #e8f5e9;
+    border: 3px solid #4CAF50;
+    color: #4CAF50;
+}
+
+.alert-box {
+    background-color: #fff4e5;
+    border: 3px solid #ff9800;
+    color: #ff9800;
+}
+
+.error-box {
+    background-color: #ffebee;
+    border: 3px solid #f44336;
+    color: #f44336;
+}

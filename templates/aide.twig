@@ -1,28 +1,95 @@
 <!DOCTYPE html>
 <html lang="fr">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Aide</title>
-		<link rel="stylesheet" href="../src/CSS/aide.css">
-	</head>
-	<body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aide</title>
+    <link rel="stylesheet" href="../src/CSS/aide.css">
+</head>
+<body>
 
-		<!-- Navbar -->
-		<nav>
-			<a href="index.php"><img src="../src/icons/home.png" alt="Accueil">Accueil</a>
-			<a href="entreprise.php"><img src="../src/icons/entreprise.png" alt="Entreprise">Entreprise</a>
-			<a href="stagiaire.php"><img src="../src/icons/stage.png" alt="Stagiaire">Stagiaire</a>
-			<a href="inscription.php"><img src="../src/icons/inscrire.png" alt="Inscription">Inscription</a>
-			<a href="aide.php" class="actif"><img src="../src/icons/aide.png" alt="Aide">Aide</a>
-			<a href="deconnexion.php"><img src="../src/icons/deconnexion.png" alt="Déconnexion">Déconnexion</a>
+    <!-- Navbar -->
+    <nav>
+        <a href="index.php"><img src="../src/icons/home.png" alt="Accueil">Accueil</a>
+        <a href="entreprise.php"><img src="../src/icons/entreprise.png" alt="Entreprise">Entreprise</a>
+        <a href="stagiaire.php"><img src="../src/icons/stage.png" alt="Stagiaire">Stagiaire</a>
+        <a href="inscription.php"><img src="../src/icons/inscrire.png" alt="Inscription">Inscription</a>
+        <a href="aide.php" class="actif"><img src="../src/icons/aide.png" alt="Aide">Aide</a>
+        <a href="deconnexion.php"><img src="../src/icons/deconnexion.png" alt="Déconnexion">Déconnexion</a>
+    </nav>
 
-		</nav>
+    <!-- Contenu principal -->
+    <div class="content">
+        <h1>Aide & Fonctionnement de l'application</h1>
 
-		<!-- Contenu principal -->
-		<div class="content">
-			<h1>Une question ? Tu es au bonne endroit</h1>
-		</div>
+        <div class="box">
+            <h2>1. Navigation</h2>
+            <p>
+                Utilisez la barre de navigation à gauche pour accéder aux différentes sections :
+            </p>
+            <ul>
+                <li><strong>Accueil :</strong> Page principale de l'application permettant à l'utilisateur de se connecter</li>
+                <li><strong>Entreprise :</strong> Gestion des entreprises, ajout et modification des informations.</li>
+                <li><strong>Stagiaire :</strong> Gestion des stagiaires et leurs informations associées.</li>
+                <li><strong>Inscription :</strong> Ajouter de nouveaux stagiaires.</li>
+                <li><strong>Aide :</strong> Consulter ce guide pour toute question.</li>
+                <li><strong>Déconnexion :</strong> Quittez l'application de manière sécurisée puis vous serez redirigé vers la page accueil</li>
+            </ul>
+        </div>
 
-	</body>
+        <div class="box info-box">
+            <h2>2. Gestion des entreprises</h2>
+            <p>
+                La section <strong>Entreprise</strong> vous permet de :
+            </p>
+            <ul>
+                <li>Ajouter de nouvelles entreprises via le formulaire.</li>
+                <li>Consulter la liste des entreprises existantes.</li>
+                <li>Modifier ou supprimer des entreprises selon les besoins.</li>
+				<li>
+            </ul>
+        </div>
+
+        <div class="box success-box">
+            <h2>3. Gestion des stagiaires</h2>
+            <p>
+                Dans la section <strong>Stagiaire</strong>, vous pouvez :
+            </p>
+            <ul>
+                <li>Ajouter un stagiaire en remplissant les champs nécessaires.</li>
+                <li>Attribuer un stagiaire à une entreprise existante.</li>
+                <li>Modifier ou supprimer un stagiaire si besoin.</li>
+            </ul>
+        </div>
+
+        <div class="box alert-box">
+            <h2>4. Sécurité et accès</h2>
+            <p>
+                Assurez-vous de vous déconnecter après chaque session en cliquant sur le bouton
+                <strong>Déconnexion</strong>. L'accès à certaines pages peut être limité en fonction de votre rôle.
+            </p>
+        </div>
+
+        <div class="box error-box">
+            <h2>5. Problèmes et erreurs</h2>
+            <p>
+                En cas de problème, vérifiez les points suivants :
+            </p>
+            <ul>
+                <li>Assurez-vous que tous les champs obligatoires sont remplis dans les formulaires.</li>
+                <li>Contactez un administrateur si une fonctionnalité semble ne pas fonctionner.</li>
+                <li>Relancez l'application si une erreur inattendue se produit.</li>
+            </ul>
+        </div>
+
+        <div class="box">
+            <h2>6. Contact</h2>
+            <p>
+                Si vous avez d'autres questions ou besoin d'aide supplémentaire, contactez-nous à :
+                <strong>support@exemple.com</strong>.
+            </p>
+        </div>
+    </div>
+
+</body>
 </html>
