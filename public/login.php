@@ -4,9 +4,16 @@ require_once 'connect.php';
 session_start(); // Démarrer la session
 
 // Récupérer les données du formulaire
-$login = $_POST['login'];
-$password = $_POST['password'];
-$role = $_POST['role']; // Récupérer la valeur du rôle (étudiant ou enseignant)
+$login = isset($_POST['login']) ? trim($_POST['login']) : null;
+$password = isset($_POST['password']) ? trim($_POST['password']) : null;
+$role = isset($_POST['role']) ? trim($_POST['role']) : null;
+
+// Vérifier si le rôle est défini
+if (empty($role)) {
+    // Rediriger vers la page d'index avec un message d'erreur
+    header("Location: index.php?error=" . urlencode("Veuillez sélectionner un rôle."));
+    exit;
+}
 
 try {
     if ($role === 'etudiant') {
@@ -18,7 +25,8 @@ try {
         $stmt->bindParam(':login', $login);
         $stmt->bindParam(':password', $password);
     } else {
-        echo "Veuillez sélectionner un rôle valide.";
+        // Rediriger vers la page d'index avec un message d'erreur si le rôle est invalide
+        header("Location: index.php?error=" . urlencode("Rôle invalide sélectionné."));
         exit;
     }
 
@@ -38,8 +46,20 @@ try {
         header("Location: entreprise.php");
         exit;
     } else {
-        echo "Login ou mot de passe incorrect.";
+        // Rediriger vers la page d'index avec un message d'erreur si les identifiants sont incorrects
+        header("Location: index.php?error=" . urlencode("Login ou mot de passe incorrect."));
+        exit;
     }
 } catch (PDOException $e) {
-    echo "Erreur : " . $e->getMessage();
+    // Rediriger vers la page d'index avec un message d'erreur en cas de problème de base de données
+    header("Location: index.php?error=" . urlencode("Erreur : " . $e->getMessage()));
+    exit;
 }
+
+// Code pour afficher les erreurs si elles existent (en dehors du PHP principal)
+?>
+<?php if (isset($_GET['error'])): ?>
+    <div style="color: red; font-weight: bold; margin: 10px 0;">
+        <?= htmlspecialchars($_GET['error']) ?>
+    </div>
+<?php endif; ?>
