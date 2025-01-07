@@ -23,16 +23,14 @@
 			<div class="button-group">
 				<button onclick="window.location.href='rechercher_stagiaire.php';">Rechercher un stagiaire existant</button>
 				<button onclick="window.location.href='ajouter_etudiant.php';">Ajouter un étudiant</button>
-				<button onclick="window.location.href='modifier_stage.php';">Modifier stage</button>
-
-
 			</div>
 
 			<table>
 				<thead>
 					<tr>
-						<th class="actions-eleve">Action</th>
+						<th class="actions-eleve">Details</th>
 						<th class="actions-enseignant">Action</th>
+						<th>Modifier stage</th>
 						<th>Étudiant</th>
 						<th>Entreprise</th>
 						<th>Professeur</th>
@@ -79,7 +77,11 @@
 									</form>
 								</div>
 							</td>
-
+							<td>
+								<button type="submit">
+									<img src="../src/icons/modifier.png" alt="Modifier">
+								</button>
+							</td>
 							<!-- Informations dynamiques -->
 							<td>
 								{{ etudiant.nom_etudiant }}
