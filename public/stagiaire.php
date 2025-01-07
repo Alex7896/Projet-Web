@@ -8,7 +8,8 @@ if (!isset($_SESSION['user'])) {
 
 // Vérifiez le rôle
 if ($_SESSION['user']['role'] !== 'enseignant') {
-    echo "Accès refusé. Cette page est réservée aux enseignants.";
+    // Rediriger vers la page acces_refuse.php
+    header("Location: acces_refuse.php");
     exit;
 }
 
