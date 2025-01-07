@@ -43,23 +43,23 @@
                 <tr>
                     <td class="actions">
                         <button onclick="window.location.href='details_entreprise.php?num_entreprise={{ entreprise.num_entreprise }}'" class="btn btn-primary">
-                            <img src="../src/voir.png">
+                            <img src="../src/icons/voir.png">
                         </button>
-                        <button>
-                            <img src="../src/inscrire.png">
+                        <button onclick="window.location.href='inscription.php?'" class="btn btn-primary">
+                            <img src="../src/icons/inscrire.png">
                         </button>
                         {% if role == 'enseignant' %}
                         <form action="modifier_entreprise.php" method="GET" style="display: inline;">
                             <input type="hidden" name="num_entreprise" value="{{ entreprise.num_entreprise }}">
                             <input type="hidden" name="specialite" value="{{ entreprise.specialite_libelle }}">
                             <button type="submit">
-                                <img src="../src/modifier.png">
+                                <img src="../src/icons/modifier.png">
                             </button>
                         </form>
                         <form action="supprimer_entreprise.php" method="POST" style="display: inline;">
                             <input type="hidden" name="num_entreprise" value="{{ entreprise.num_entreprise }}">
                             <button type="submit" class="delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette entreprise ?');">
-                                <img src="../src/supprimer.png">
+                                <img src="../src/icons/supprimer.png">
                             </button>
                         </form>
                         {% endif %}

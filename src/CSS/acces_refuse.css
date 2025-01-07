@@ -1,0 +1,78 @@
+/* Réinitialisation de base */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Courier New', Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Style de la navbar */
+nav {
+    background-color: #222;
+    width: 290px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: white;
+    border-right: 5px solid #4CAF50;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+nav a {
+    display: flex;
+    align-items: center;
+    padding: 17px 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 1.3em;
+    white-space: nowrap;
+}
+
+nav a img {
+    width: 20px;
+    height: auto;
+    margin-right: 10px;
+}
+
+nav a.actif {
+    background-color: #4CAF50;
+}
+
+nav a:hover {
+    background-color: #404040;
+}
+
+/* Style du contenu principal */
+.content {
+    margin-left: 290px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Conteneur du message */
+.message-container {
+    max-width: 600px;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.message-container h1 {
+    color: #e74c3c;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.message-container p {
+    color: #333;
+    font-size: 1.2em;
+}
