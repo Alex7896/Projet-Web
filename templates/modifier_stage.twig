@@ -4,12 +4,12 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="../src/CSS/inscription.css">
-		
+
 	</head>
 	<body>
 		<!-- Navbar -->
 		<nav>
-			<a href="index.php" ><img src="../src/icons/home.png" alt="Accueil">Accueil</a>
+			<a href="index.php"><img src="../src/icons/home.png" alt="Accueil">Accueil</a>
 			<a href="entreprise.php"><img src="../src/icons/entreprise.png" alt="Entreprise">Entreprise</a>
 			<a href="stagiaire.php"><img src="../src/icons/stage.png" alt="Stagiaire">Stagiaire</a>
 			<a href="inscription.php" class="actif"><img src="../src/icons/inscrire.png" alt="Inscription">Inscription</a>
@@ -20,7 +20,7 @@
 
 		<!-- Contenu principal -->
 		<div class="content">
-			<h1>Formulaire d'Inscription</h1>
+			<h1>Formulaire de modification</h1>
 			<form
 				action="ajouter_inscription.php" method="POST">
 				<!-- Premier tableau : Contact -->
@@ -121,6 +121,6 @@
 		</td>
 	</tr>
 </tbody></table><!-- Bouton d'ajout --><div style="margin-top: 20px;">
-<button type="submit">Ajouter</button></div></div>{% if success_message %}<div style="color: green; font-weight: bold; margin-bottom: 15px;">
+<button type="submit">modifier</button></div></div>{% if success_message %}<div style="color: green; font-weight: bold; margin-bottom: 15px;">
 {{ success_message }}</div>{% endif %}{% if error_message %}<div style="color: red; font-weight: bold; margin-bottom: 15px;">
 {{ error_message }}</div>{% endif %}</body></html></form>
