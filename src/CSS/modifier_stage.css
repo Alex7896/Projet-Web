@@ -1,18 +1,16 @@
-/* Style général */
-html, body {
+/* Styles globaux */
+html,
+body {
     height: 100%;
     margin: 0;
     font-family: 'Courier New', Verdana, sans-serif;
-    background-color: #f0f0f0;
 }
-
 body {
+    background-color: #f0f0f0;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
 }
-
-/* Navbar */
 nav {
     background-color: #222;
     width: 290px;
@@ -26,7 +24,6 @@ nav {
     flex-direction: column;
     padding-top: 20px;
 }
-
 nav a {
     display: flex;
     align-items: center;
@@ -36,65 +33,42 @@ nav a {
     font-size: 1.3em;
     white-space: nowrap;
 }
-
 nav a img {
     width: 20px;
+    height: auto;
     margin-right: 10px;
 }
-
 nav a.actif {
     background-color: #4CAF50;
 }
-
 nav a:hover {
     background-color: #404040;
 }
-
-/* Contenu principal */
 .content {
     padding: 20px;
-    width: 100%
+    width:100%;
 }
-
-/* Boîtes d'information */
-.box {
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
     background-color: white;
-    border: 3px solid #4CAF50;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-.box h2 {
-    color: #4CAF50;
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
 }
-
-.box ul {
-    margin: 10px 0 0 20px;
-    padding: 0;
+th {
+    background-color: #f4f4f4;
 }
-
-.info-box {
-    background-color: #e3f2fd;
-    border: 3px solid #2196f3;
-    color: #2196f3;
+select,
+textarea {
+    width: 100%;
+    padding: 5px;
+    font-size: 1em;
 }
-
-.success-box {
-    background-color: #e8f5e9;
-    border: 3px solid #4CAF50;
-    color: #4CAF50;
-}
-
-.alert-box {
-    background-color: #fff4e5;
-    border: 3px solid #ff9800;
-    color: #ff9800;
-}
-
-.error-box {
-    background-color: #ffebee;
-    border: 3px solid #f44336;
-    color: #f44336;
+.large-text {
+    height: 100px;
 }
