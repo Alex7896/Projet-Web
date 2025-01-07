@@ -18,23 +18,29 @@ if (!$id_stagiaire) {
 try {
     // Requête SQL pour récupérer les informations du stagiaire
     $query = "
-        SELECT 
-            etudiant.nom_etudiant AS nom,
-            etudiant.prenom_etudiant AS prenom,
-            entreprise.raison_sociale AS entreprise,
-            professeur.nom_prof AS nom_prof,
-            professeur.prenom_prof AS prenom_prof
-        FROM 
-            etudiant
-        LEFT JOIN 
-            stage ON stage.num_etudiant = etudiant.num_etudiant
-        LEFT JOIN 
-            entreprise ON stage.num_entreprise = entreprise.num_entreprise
-        LEFT JOIN 
-            professeur ON stage.num_prof = professeur.num_prof
-        WHERE 
-            etudiant.num_etudiant = :id_stagiaire
-    ";
+    SELECT 
+        etudiant.nom_etudiant AS nom,
+        etudiant.prenom_etudiant AS prenom,
+        entreprise.raison_sociale AS entreprise,
+        professeur.nom_prof AS nom_prof,
+        professeur.prenom_prof AS prenom_prof,
+        stage.debut_stage,
+        stage.fin_stage,
+        stage.type_stage,
+        stage.desc_projet,
+        stage.observation_stage
+    FROM 
+        etudiant
+    LEFT JOIN 
+        stage ON stage.num_etudiant = etudiant.num_etudiant
+    LEFT JOIN 
+        entreprise ON stage.num_entreprise = entreprise.num_entreprise
+    LEFT JOIN 
+        professeur ON stage.num_prof = professeur.num_prof
+    WHERE 
+        etudiant.num_etudiant = :id_stagiaire
+";
+
 
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':id_stagiaire', $id_stagiaire);

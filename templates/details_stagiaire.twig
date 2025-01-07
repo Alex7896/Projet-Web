@@ -8,11 +8,11 @@
 			{{ stagiaire.prenom }}</title>
 		<link rel="stylesheet" href="../src/CSS/details_stagiaire.css">
 	</head>
-	
+
 	<body>
 		<!-- Navbar -->
 		<nav>
-			<a href="index.php" ><img src="../src/icons/home.png" alt="Accueil">Accueil</a>
+			<a href="index.php"><img src="../src/icons/home.png" alt="Accueil">Accueil</a>
 			<a href="entreprise.php"><img src="../src/icons/entreprise.png" alt="Entreprise">Entreprise</a>
 			<a href="stagiaire.php" class="actif"><img src="../src/icons/stage.png" alt="Stagiaire">Stagiaire</a>
 			<a href="inscription.php"><img src="../src/icons/inscrire.png" alt="Inscription">Inscription</a>
@@ -44,19 +44,25 @@
 						{{ stagiaire.nom_prof }}</li>
 					<li>
 						<strong>Debut stage:</strong>
-						{{ stagiaire.debut_stage }}</li>
+						{{ stagiaire.debut_stage }}
+					</li>
 					<li>
 						<strong>Fin stage:</strong>
-						{{ stagiaire.fin_stage }}</li>
+						{{ stagiaire.fin_stage }}
+					</li>
 					<li>
 						<strong>Type stage:</strong>
-						{{ stagiaire.type_stage }}</li>
+						{{ stagiaire.type_stage }}
+					</li>
 					<li>
 						<strong>Description projet:</strong>
-						{{ stagiaire.desc_projet }}</li>
+						{{ stagiaire.desc_projet }}
+					</li>
 					<li>
 						<strong>Observation stage:</strong>
-						{{ stagiaire.observation_stage }}</li>
+						{{ stagiaire.observation_stage }}
+					</li>
+
 				</ul>
 			</section>
 		</div>
