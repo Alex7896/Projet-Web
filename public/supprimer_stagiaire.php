@@ -16,44 +16,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        $num_stage = $_POST['num_stage']; // Numéro du stage à supprimer
+        // Récupérer les `num_stage` associés au stagiaire
+        $query_select_stages = "SELECT num_stage FROM stage WHERE num_etudiant = :id_stagiaire";
+        $stmt_select_stages = $pdo->prepare($query_select_stages);
+        $stmt_select_stages->bindParam(':id_stagiaire', $id_stagiaire, PDO::PARAM_INT);
+        $stmt_select_stages->execute();
+        $stages = $stmt_select_stages->fetchAll(PDO::FETCH_COLUMN);
 
-        // Supprimer les missions associées
-        $query_mission = "DELETE FROM mission WHERE num_stage = :num_stage";
-        $stmt_mission = $pdo->prepare($query_mission);
-        $stmt_mission->bindParam(':num_stage', $num_stage, PDO::PARAM_INT);
-        $stmt_mission->execute();
+        // Supprimer les missions associées à ces stages
+        if (!empty($stages)) {
+            $query_delete_missions = "DELETE FROM mission WHERE num_stage IN (" . implode(',', $stages) . ")";
+            $pdo->exec($query_delete_missions);
+        }
 
-        // Supprimer le stage
-        $query_stage = "DELETE FROM stage WHERE num_stage = :num_stage";
-        $stmt_stage = $pdo->prepare($query_stage);
-        $stmt_stage->bindParam(':num_stage', $num_stage, PDO::PARAM_INT);
-        $stmt_stage->execute();
-
-        echo "Le stagiaire a été supprimé avec succès.";
-    } catch (PDOException $e) {
-        echo "Erreur lors de la suppression : " . $e->getMessage();
-    }
-
-
-    try {
-        // Supprimer le stagiaire de la table `stage` (relation entre étudiant et entreprise/professeur)
+        // Supprimer les stages associés au stagiaire
         $query_stage = "DELETE FROM stage WHERE num_etudiant = :id_stagiaire";
         $stmt_stage = $pdo->prepare($query_stage);
-        $stmt_stage->bindParam(':id_stagiaire', $id_stagiaire);
+        $stmt_stage->bindParam(':id_stagiaire', $id_stagiaire, PDO::PARAM_INT);
         $stmt_stage->execute();
 
         // Supprimer l'étudiant de la table `etudiant`
         $query_etudiant = "DELETE FROM etudiant WHERE num_etudiant = :id_stagiaire";
         $stmt_etudiant = $pdo->prepare($query_etudiant);
-        $stmt_etudiant->bindParam(':id_stagiaire', $id_stagiaire);
+        $stmt_etudiant->bindParam(':id_stagiaire', $id_stagiaire, PDO::PARAM_INT);
         $stmt_etudiant->execute();
 
-        // Redirection après suppression
-        header("Location: stagiaire.php");
+        // Redirection après suppression avec un message de succès
+        header("Location: stagiaire.php?success=1");
         exit;
     } catch (PDOException $e) {
-        die("Erreur lors de la suppression du stagiaire : " . $e->getMessage());
+        // Redirection avec un message d'erreur
+        $error_message = urlencode("Erreur lors de la suppression du stagiaire : " . $e->getMessage());
+        header("Location: stagiaire.php?error=$error_message");
+        exit;
     }
 } else {
     die("Requête invalide.");
