@@ -24,6 +24,12 @@ try {
         etudiant.num_etudiant,
         etudiant.nom_etudiant, 
         etudiant.prenom_etudiant,
+        stage.num_stage,
+        stage.debut_stage,
+        stage.fin_stage,
+        stage.type_stage,
+        stage.desc_projet,
+        stage.observation_stage,
         entreprise.raison_sociale AS nom_entreprise, 
         professeur.nom_prof, 
         professeur.prenom_prof
@@ -35,9 +41,7 @@ try {
         professeur ON stage.num_prof = professeur.num_prof
     LEFT JOIN 
         entreprise ON stage.num_entreprise = entreprise.num_entreprise
-";
-    $stmt = $pdo->query($query);
-    $etudiants = $stmt->fetchAll(PDO::FETCH_ASSOC); // Récupérer les résultats
+    ";
 
     $stmt = $pdo->query($query);
     $etudiants = $stmt->fetchAll(PDO::FETCH_ASSOC); // Récupérer les résultats

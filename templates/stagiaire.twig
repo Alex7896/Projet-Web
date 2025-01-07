@@ -78,15 +78,19 @@
 								</div>
 							</td>
 							<td>
-								<button type="submit">
-									<img src="../src/icons/modifier.png" alt="Modifier">
-								</button>
+								<a href="modifier_stage.php?num_stage={{ etudiant.num_stage }}" title="Modifier2">
+									<button type="button">
+										<img src="../src/icons/modifier.png" alt="Modifier2">
+									</button>
+								</a>
 							</td>
 							<!-- Informations dynamiques -->
 							<td>
 								{{ etudiant.nom_etudiant }}
 								<p>ID du stagiaire :
 									{{ etudiant.num_etudiant }}</p>
+								<p>ID du stage :
+									{{ etudiant.num_stage }}</p>
 							</td>
 							<td>{{ etudiant.nom_entreprise is not null ? etudiant.nom_entreprise : 'Pas de stage' }}</td>
 							<td>
