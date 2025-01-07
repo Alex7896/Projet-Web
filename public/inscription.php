@@ -6,12 +6,6 @@ if (!isset($_SESSION['user'])) {
     exit;
 }
 
-// Vérifiez le rôle
-if ($_SESSION['user']['role'] !== 'enseignant') {
-    // Rediriger vers la page acces_refuse.php
-    header("Location: acces_refuse.php");
-    exit;
-}
 
 require_once '../vendor/autoload.php'; // Charger Twig
 require_once 'connect.php'; // Connexion à la base de données
