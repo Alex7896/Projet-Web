@@ -29,7 +29,7 @@
 				<thead>
 					<tr>
 						<th class="actions-eleve">Details</th>
-						<th class="actions-enseignant">Action</th>
+						<th class="actions-enseignant">Action Etudiant</th>
 						<th>Modifier stage</th>
 						<th>Étudiant</th>
 						<th>Entreprise</th>
@@ -77,12 +77,15 @@
 									</form>
 								</div>
 							</td>
-							<td>
-								<a href="modifier_stage.php?num_stage={{ etudiant.num_stage }}" title="Modifier2">
-									<button type="button">
-										<img src="../src/icons/modifier.png" alt="Modifier2">
-									</button>
-								</a>
+							<td class="actions-stage">
+								<div class="actions">
+									<form action="modifier_stage.php" method="POST" style="display: inline;">
+										<input type="hidden" name="id_stagiaire" value="{{ etudiant.num_etudiant }}">
+										<button type="submit">
+											<img src="../src/icons/modifier.png" alt="Modifier stage">
+										</button>
+									</form>
+								</div>
 							</td>
 							<!-- Informations dynamiques -->
 							<td>
