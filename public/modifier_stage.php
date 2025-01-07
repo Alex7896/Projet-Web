@@ -8,26 +8,32 @@ if (!isset($_SESSION['user'])) {
 
 // Vérifiez le rôle
 if ($_SESSION['user']['role'] !== 'enseignant') {
+    // Rediriger vers la page acces_refuse.php
     header("Location: acces_refuse.php");
     exit;
 }
 
-require_once '../vendor/autoload.php';
-require_once 'connect.php';
+require_once '../vendor/autoload.php'; // Charger Twig
+require_once 'connect.php'; // Connexion à la base de données
 
 // Initialisation des variables
+$etudiants = [];
+$entreprises = [];
+$professeurs = [];
+$stage = null;
 $success_message = null;
 $error_message = null;
 
-// Récupérer l'ID du stage à modifier
-$num_stage = $_GET['num_stage'] ?? null;
+// Récupérer l'ID du stage
+$num_stage = $_POST['num_stage'] ?? $_GET['num_stage'] ?? null;
 
 if (!$num_stage) {
-    die("ID du stage manquant.");
+    header("Location: stagiaire.php?error=" . urlencode("ID du stage manquant."));
+    exit;
 }
 
 try {
-    // Récupérer les données du stage
+    // Récupérer les informations du stage
     $query = "
         SELECT 
             stage.num_stage,
@@ -48,15 +54,20 @@ try {
     $stage = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$stage) {
-        die("Stage introuvable.");
+        header("Location: stagiaire.php?error=" . urlencode("Stage introuvable."));
+        exit;
     }
 
-    // Récupérer les étudiants, entreprises et professeurs
+    // Récupérer les étudiants actifs
     $etudiants = $pdo->query("SELECT num_etudiant, nom_etudiant, prenom_etudiant FROM etudiant WHERE en_activite = 1")->fetchAll(PDO::FETCH_ASSOC);
+
+    // Récupérer les entreprises
     $entreprises = $pdo->query("SELECT num_entreprise, raison_sociale FROM entreprise")->fetchAll(PDO::FETCH_ASSOC);
+
+    // Récupérer les professeurs
     $professeurs = $pdo->query("SELECT num_prof, nom_prof, prenom_prof FROM professeur")->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
-    die("Erreur lors de la récupération des données : " . $e->getMessage());
+    $error_message = "Erreur lors de la récupération des données : " . $e->getMessage();
 }
 
 // Configurer Twig

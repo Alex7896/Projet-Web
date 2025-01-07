@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="../src/CSS/inscription.css">
-
+		<title>Modifier Stage</title>
+		<link rel="stylesheet" href="../src/CSS/modifier_stage.css">
 	</head>
 	<body>
 		<!-- Navbar -->
@@ -12,18 +12,19 @@
 			<a href="index.php"><img src="../src/icons/home.png" alt="Accueil">Accueil</a>
 			<a href="entreprise.php"><img src="../src/icons/entreprise.png" alt="Entreprise">Entreprise</a>
 			<a href="stagiaire.php"><img src="../src/icons/stage.png" alt="Stagiaire">Stagiaire</a>
-			<a href="inscription.php" class="actif"><img src="../src/icons/inscrire.png" alt="Inscription">Inscription</a>
+			<a href="inscription.php"><img src="../src/icons/inscrire.png" alt="Inscription">Inscription</a>
 			<a href="aide.php"><img src="../src/icons/aide.png" alt="Aide">Aide</a>
 			<a href="deconnexion.php"><img src="../src/icons/deconnexion.png" alt="Déconnexion">Déconnexion</a>
-
 		</nav>
 
 		<!-- Contenu principal -->
 		<div class="content">
-			<h1>Formulaire de modification</h1>
-			<form
-				action="ajouter_inscription.php" method="POST">
-				<!-- Premier tableau : Contact -->
+			<h1>Modifier Stage</h1>
+			<form action="update_stage.php" method="POST">
+				<input
+				type="hidden" name="num_stage" value="{{ stage.num_stage }}">
+
+				<!-- Contact -->
 				<table>
 					<thead>
 						<tr>
@@ -34,9 +35,9 @@
 						<tr>
 							<td>Entreprise</td>
 							<td>
-								<select name="entreprise" required>
+								<select name="num_entreprise" required>
 									{% for entreprise in entreprises %}
-										<option value="{{ entreprise.num_entreprise }}">
+										<option value="{{ entreprise.num_entreprise }}" {% if entreprise.num_entreprise == stage.num_entreprise %} selected {% endif %}>
 											{{ entreprise.raison_sociale }}
 										</option>
 									{% endfor %}
@@ -46,81 +47,85 @@
 						<tr>
 							<td>Étudiant</td>
 							<td>
-								<select name="etudiant" required>
-									{% if etudiants is not empty %}
-										{% for etudiant in etudiants %}
-											<option value="{{ etudiant.num_etudiant }}">
-												{{ etudiant.prenom_etudiant }}
-												{{ etudiant.nom_etudiant }}
-											</option>
-										{% endfor %}
-									{% else %}
-										<option value="">Aucun étudiant disponible</option>
-									{% endif %}
+								<select name="num_etudiant" required>
+									{% for etudiant in etudiants %}
+										<option value="{{ etudiant.num_etudiant }}" {% if etudiant.num_etudiant == stage.num_etudiant %} selected {% endif %}>
+											{{ etudiant.prenom_etudiant }}
+											{{ etudiant.nom_etudiant }}
+										</option>
+									{% endfor %}
 								</select>
 							</td>
 						</tr>
-
 						<tr>
 							<td>Professeur</td>
 							<td>
-								<select name="professeur" required>
-									{% if professeurs is not empty %}
-										{% for professeur in professeurs %}
-											<option value="{{ professeur.num_prof }}">
-												{{ professeur.prenom_prof }}
-												{{ professeur.nom_prof }}
-											</option>
-										{% endfor %}
-									{% else %}
-										<option value="">Aucun professeur disponible</option>
-									{% endif %}
+								<select name="num_prof" required>
+									{% for professeur in professeurs %}
+										<option value="{{ professeur.num_prof }}" {% if professeur.num_prof == stage.num_prof %} selected {% endif %}>
+											{{ professeur.prenom_prof }}
+											{{ professeur.nom_prof }}
+										</option>
+									{% endfor %}
 								</select>
 							</td>
 						</tr>
 					</tbody>
-				</tr>
-			</tbody>
-		</body>
+				</table>
+
+				<!-- Description du stage -->
+				<table>
+					<thead>
+						<tr>
+							<th colspan="2">Description du Stage</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Date de début de stage</td>
+							<td><input type="date" name="debut_stage" value="{{ stage.debut_stage }}" required></td>
+						</tr>
+						<tr>
+							<td>Date de fin de stage</td>
+							<td><input type="date" name="fin_stage" value="{{ stage.fin_stage }}" required></td>
+						</tr>
+						<tr>
+							<td>Type de stage</td>
+							<td>
+								<select name="type_stage" required>
+									<option value="stage" {% if stage.type_stage == 'stage' %} selected {% endif %}>Stage</option>
+									<option value="alternance" {% if stage.type_stage == 'alternance' %} selected {% endif %}>Alternance</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Description du projet</td>
+							<td>
+								<textarea name="desc_projet">{{ stage.desc_projet }}</textarea>
+							</td>
+						</tr>
+						<tr>
+							<td>Observation</td>
+							<td>
+								<textarea name="observation_stage">{{ stage.observation_stage }}</textarea>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<!-- Bouton de modification -->
+				<form action="update_stage.php" method="POST">
+					<input
+					type="hidden" name="num_stage" value="{{ stage.num_stage }}">
+
+					<!-- Other form fields for modifying the stage -->
+
+					<div style="margin-top: 20px;">
+						<button type="submit">Modifier</button>
+					</div>
+				</form>
+
+			</form>
+		</div>
 	</body>
-</html></table><!-- Deuxième tableau : Description du stage --><table>
-<thead>
-	<tr>
-		<th colspan="2">Description du Stage</th>
-	</tr>
-</thead>
-<tbody>
-	<tr>
-		<td>Date de début de stage</td>
-		<td><input type="date" name="date_debut_stage"></td>
-	</tr>
-	<tr>
-		<td>Date de fin de stage</td>
-		<td><input type="date" name="date_fin_stage"></td>
-	</tr>
-	<tr>
-		<td>Type de stage</td>
-		<td>
-			<select name="type_stage">
-				<option value="aucun">Aucun</option>
-				<option value="stage">Stage</option>
-				<option value="alternance">Alternance</option>
-			</select>
-		</td>
-	</tr>
-	<tr>
-		<td>Description du stage</td>
-		<td>
-			<textarea name="description_stage" class="large-text"></textarea>
-		</td>
-	</tr>
-	<tr>
-		<td>Observation</td>
-		<td>
-			<textarea name="observation" class="large-text"></textarea>
-		</td>
-	</tr>
-</tbody></table><!-- Bouton d'ajout --><div style="margin-top: 20px;">
-<button type="submit">modifier</button></div></div>{% if success_message %}<div style="color: green; font-weight: bold; margin-bottom: 15px;">
-{{ success_message }}</div>{% endif %}{% if error_message %}<div style="color: red; font-weight: bold; margin-bottom: 15px;">
-{{ error_message }}</div>{% endif %}</body></html></form>
+</html>
